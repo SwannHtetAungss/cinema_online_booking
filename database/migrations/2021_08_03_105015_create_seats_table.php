@@ -16,6 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->string('seat_number');
+            $table->integer('seat_price');
             $table->unsignedBigInteger('hall_id');
             $table->timestamps();
             $table->softDeletes();
