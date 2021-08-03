@@ -13,7 +13,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table tablesorter " id="">
+              <table class="table tablesorter " id="sampleTable">
                 <thead class=" text-primary">
                   <tr>
                     <th>

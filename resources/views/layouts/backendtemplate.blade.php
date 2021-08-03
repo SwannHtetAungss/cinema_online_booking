@@ -18,6 +18,9 @@
   <link href="{{asset('backend_assets/css/black-dashboard.css?v=1.0.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('backend_assets/demo/demo.css')}}" rel="stylesheet" />
+
+  <!-- Main CSS-->
+  <link rel="stylesheet" type="text/css" href="{{asset('backend_assets/css/main.css')}}">
 </head>
 
 <body class="">
@@ -249,6 +252,9 @@
   <script src="{{asset('backend_assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('backend_assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
+  <script type="text/javascript" src="{{asset('backend_assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('backend_assets/js/plugins/dataTables.bootstrap.min.js')}}"></script>
+  <script type="text/javascript">$('#sampleTable').DataTable();</script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
