@@ -63,16 +63,16 @@
               <p>Movies</p>
             </a>
           </li>
+          <li class="{{Request::is('shows') ? 'active': ''}}">
+            <a href="{{route('shows.index')}}">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Shows</p>
+            </a>
+          </li>
           <li>
             <a href="./user.html">
               <i class="tim-icons icon-single-02"></i>
               <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="tim-icons icon-puzzle-10"></i>
-              <p>Table List</p>
             </a>
           </li>
           <li>
@@ -81,12 +81,12 @@
               <p>Typography</p>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="./rtl.html">
               <i class="tim-icons icon-world"></i>
               <p>RTL Support</p>
             </a>
-          </li>
+          </li> --}}
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="tim-icons icon-spaceship"></i>
