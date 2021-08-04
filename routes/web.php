@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('frontend.home');
 });
 
 // For backend
@@ -23,4 +23,10 @@ Route::resource('hall','HallController');
 Route::resource('seat','SeatController');
 
 Route::resource('movie','MovieController');
+
+
+
+
+// For Frontend
+Route::get('home', 'FrontendController@home')->name('frontend.home');
 
