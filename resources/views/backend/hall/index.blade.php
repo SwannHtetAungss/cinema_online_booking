@@ -46,7 +46,7 @@
                       {{$hall->total_seat}}
                     </td>
                     <td class="text-center">
-                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-primary btn-sm">Edit</a>
                       <a href="#" data-id="{{route('hall.destroy',$hall->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
                     </td>
                   </tr>
