@@ -57,10 +57,10 @@
               <p>Seats</p>
             </a>
           </li>
-          <li>
-            <a href="./notifications.html">
+          <li class="{{Request::is('movie') ? 'active': ''}}">
+            <a href="{{route('movie.index')}}">
               <i class="tim-icons icon-bell-55"></i>
-              <p>Notifications</p>
+              <p>Movies</p>
             </a>
           </li>
           <li>
