@@ -31,104 +31,26 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php
+                    $i=1;
+                  @endphp
+                  @foreach($halls as $hall)
                   <tr>
                     <td>
-                      Dakota Rice
+                      {{$i++}}
                     </td>
                     <td>
-                      Niger
+                      {{$hall->name}}
                     </td>
                     <td>
-                      Oud-Turnhout
+                      {{$hall->total_seat}}
                     </td>
                     <td class="text-center">
-                      $36,738
+                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                      <a href="#" data-id="{{route('hall.destroy',$hall->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-center">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-center">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Philip Chaney
-                    </td>
-                    <td>
-                      Korea, South
-                    </td>
-                    <td>
-                      Overland Park
-                    </td>
-                    <td class="text-center">
-                      $38,735
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-center">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $78,615
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Jon Porter
-                    </td>
-                    <td>
-                      Portugal
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-center">
-                      $98,615
-                    </td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -137,4 +59,37 @@
       </div>
     </div>
 </div>
+
+{{-- Modal start --}}
+<div class="modal fade" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="" id="deleteModalForm">
+        @csrf
+        @method('DELETE')
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure to delete?</h4>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="btnsubmit" class="btn btn-danger" value="Delete">
+          <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{-- Modal End --}}
+@endsection
+
+@section('script')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.deletebtn').click(function(){
+        var id = $(this).data('id');
+        // console.log(id);
+        $('#deleteModalForm').attr('action',id);
+        $('#deleteModal').modal('show');
+      })
+    })
+  </script>
 @endsection

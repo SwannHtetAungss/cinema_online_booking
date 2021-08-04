@@ -383,6 +383,10 @@
         application: "black-dashboard-free"
       });
   </script>
+
+  {{-- Custom JS --}}
+  @yield('script')
+  
 </body>
 
 </html>

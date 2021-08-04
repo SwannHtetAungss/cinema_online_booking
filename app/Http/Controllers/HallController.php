@@ -14,7 +14,8 @@ class HallController extends Controller
      */
     public function index()
     {
-        return view('backend.hall.index');
+        $halls = Hall::all();
+        return view('backend.hall.index',compact('halls'));
     }
 
     /**
@@ -74,7 +75,7 @@ class HallController extends Controller
      */
     public function edit(Hall $hall)
     {
-        //
+        return view('backend.hall.edit',compact('hall'));
     }
 
     /**
@@ -86,7 +87,23 @@ class HallController extends Controller
      */
     public function update(Request $request, Hall $hall)
     {
-        //
+        // dd($request);
+
+        // validation
+        $request->validate([
+            "name" => "required|max:191|min:1",
+            "total_seat" => "required"
+        ]);
+
+        // upload file
+
+        // data insert
+        $hall->name = $request->name;
+        $hall->total_seat = $request->total_seat;
+        $hall->save();
+
+        // redirect
+        return redirect()->route('hall.index');
     }
 
     /**
@@ -97,6 +114,13 @@ class HallController extends Controller
      */
     public function destroy(Hall $hall)
     {
-        //
+        $hall->delete();
+
+        // if on Delete Cascade
+        // foreach($category->subcategories as $subcategory){
+        //     $subcategory->delete();
+        // }
+        // redirect
+        return redirect()->route('hall.index');
     }
 }
