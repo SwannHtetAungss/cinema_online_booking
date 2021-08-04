@@ -1,6 +1,6 @@
 @extends('layouts.backendtemplate')
 
-@section('title','Cinema Hall Page')
+@section('title','Cinema Seat Page')
 
 @section('content')
 <div class="content">
@@ -8,8 +8,8 @@
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header">
-            <h2 class="card-title d-inline"> Cinema Hall </h2>
-            <a href="{{route('hall.create')}}" class="btn btn-fill btn-primary float-right">New</a>
+            <h2 class="card-title d-inline"> Cinema Seat </h2>
+            <a href="{{route('seat.create')}}" class="btn btn-fill btn-primary float-right">New</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -20,10 +20,13 @@
                       No.
                     </th>
                     <th>
-                      Name
+                      Seat Number
                     </th>
                     <th>
-                      Total Seats
+                      Price
+                    </th>
+                    <th>
+                      Hall
                     </th>
                     <th class="text-center">
                       Action
@@ -34,20 +37,23 @@
                   @php
                     $i=1;
                   @endphp
-                  @foreach($halls as $hall)
+                  @foreach($seats as $seat)
                   <tr>
                     <td>
                       {{$i++}}
                     </td>
                     <td>
-                      {{$hall->name}}
+                      {{$seat->seat_number}}
                     </td>
                     <td>
-                      {{$hall->total_seat}}
+                      {{$seat->seat_price}}
+                    </td>
+                    <td>
+                      {{$seat->hall->name}}
                     </td>
                     <td class="text-center">
-                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="#" data-id="{{route('hall.destroy',$hall->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                      <a href="{{route('seat.edit',$seat->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                      <a href="#" data-id="{{route('seat.destroy',$seat->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
                     </td>
                   </tr>
                   @endforeach

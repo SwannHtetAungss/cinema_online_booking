@@ -45,16 +45,16 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
-            <a href="./icons.html">
+          <li class="{{Request::is('hall') ? 'active': ''}}">
+            <a href="{{route('hall.index')}}">
               <i class="tim-icons icon-atom"></i>
-              <p>Icons</p>
+              <p>Halls</p>
             </a>
           </li>
-          <li>
-            <a href="./map.html">
+          <li class="{{Request::is('seat') ? 'active': ''}}">
+            <a href="{{route('seat.index')}}">
               <i class="tim-icons icon-pin"></i>
-              <p>Maps</p>
+              <p>Seats</p>
             </a>
           </li>
           <li>
@@ -69,7 +69,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="./tables.html">
               <i class="tim-icons icon-puzzle-10"></i>
               <p>Table List</p>

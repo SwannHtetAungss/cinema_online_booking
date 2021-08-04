@@ -32,7 +32,7 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 
 /****** own ********/
-div.dataTables_length option {
+div option {
   background-color: rgb(39,41,61);
 }
 /*******************/

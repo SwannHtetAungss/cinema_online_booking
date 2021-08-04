@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 // For backend
 Route::resource('hall','HallController');
+Route::resource('seat','SeatController');
 
