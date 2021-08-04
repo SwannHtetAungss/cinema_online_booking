@@ -13,4 +13,9 @@ class Hall extends Model
     public function seats(){
         return $this->hasMany('App\Seat');
     }
+
+    public function shows(){
+        return $this->hasMany('App\Show');
+    }
+
 }

@@ -20,13 +20,14 @@ Route::get('/', function () {
 // For backend
 Route::resource('hall','HallController');
 
+Route::resource('shows','ShowController');
+
+
 Route::resource('seat','SeatController');
 
 Route::resource('movie','MovieController');
 
-
-
-
 // For Frontend
 Route::get('home', 'FrontendController@home')->name('frontend.home');
+
 
