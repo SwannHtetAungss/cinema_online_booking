@@ -12,8 +12,8 @@
             <a href="{{route('hall.index')}}" class="btn btn-fill btn-primary float-right">Back</a>
           </div>
           <div class="card-body">
-            <form>
-
+            <form method="post" action="{{route('hall.store')}}">
+            	@csrf
             	<div class="row mb-3">
 		            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
 		            <div class="col-sm-10">
@@ -22,26 +22,24 @@
 		                <span class="text-danger">{{ $errors->first('name') }}</span>
 		              @endif
 		            </div>
-		        </div>
+		        	</div>
 
-		        <div class="row mb-3">
-		            <label for="inputTotalSeat" class="col-sm-2 col-form-label">Total Seat</label>
-		            <div class="col-sm-10">
-		              <input type="number" name="total_seat" class="form-control" id="inputTotalSeat">
-		              @if ($errors->has('total_seat'))
-		                <span class="text-danger">{{ $errors->first('total_seat') }}</span>
-		              @endif
+			        <div class="row mb-3">
+			            <label for="inputTotalSeat" class="col-sm-2 col-form-label">Total Seat</label>
+			            <div class="col-sm-10">
+			              <input type="number" name="total_seat" class="form-control" id="inputTotalSeat">
+			              @if ($errors->has('total_seat'))
+			                <span class="text-danger">{{ $errors->first('total_seat') }}</span>
+			              @endif
+			            </div>
+			        </div>
+
+			        <div class="row mb-3">
+		            <div class="col-sm-10 offset-sm-2">
+		              <button type="submit" class="btn btn-primary">Create</button>
 		            </div>
-		        </div>
-
+		        	</div>
             </form>
-          </div>
-          <div class="card-footer">
-            <div class="row mb-3">
-	            <div class="col-sm-10 offset-sm-2">
-	              <button type="submit" class="btn btn-primary">Create</button>
-	            </div>
-	        </div>
           </div>
         </div>
       </div>

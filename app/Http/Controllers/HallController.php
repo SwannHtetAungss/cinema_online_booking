@@ -35,7 +35,24 @@ class HallController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+
+        // validation
+        $request->validate([
+            "name" => "required|unique:halls|max:191|min:1",
+            "total_seat" => "required"
+        ]);
+
+        // upload file
+
+        // data insert
+        $hall = new Hall; // create new object
+        $hall->name = $request->name;
+        $hall->total_seat = $request->total_seat;
+        $hall->save();
+
+        // redirect
+        return redirect()->route('hall.index');
     }
 
     /**
