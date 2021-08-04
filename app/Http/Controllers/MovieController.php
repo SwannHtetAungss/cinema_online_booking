@@ -55,7 +55,7 @@ class MovieController extends Controller
             $fileName = time().'_'.$request->photo->getClientOriginalName();
 
             // categoryimg/624872374523_a.jpg
-            $filePath = $request->file('photo')->storeAs('moveimg', $fileName, 'public');
+            $filePath = $request->file('photo')->storeAs('movieimg', $fileName, 'public');
 
             // $path = '/storage/'.$filePath;
         }
@@ -125,7 +125,7 @@ class MovieController extends Controller
             $fileName = time().'_'.$request->photo->getClientOriginalName();
 
             // categoryimg/624872374523_a.jpg
-            $filePath = $request->file('photo')->storeAs('moveimg', $fileName, 'public');
+            $filePath = $request->file('photo')->storeAs('movieimg', $fileName, 'public');
 
             // Delete old photo (try yourself)
             // condition file exist

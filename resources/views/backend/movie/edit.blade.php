@@ -12,7 +12,7 @@
             <a href="{{route('movie.index')}}" class="btn btn-fill btn-primary float-right">Back</a>
           </div>
           <div class="card-body">
-            <form method="post" action="{{route('movie.update',$movie->id)}}">
+            <form method="post" action="{{route('movie.update',$movie->id)}}" enctype="multipart/form-data">
             	@csrf
           		@method('PUT')
                   <div class="row mb-3">
