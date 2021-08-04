@@ -1,6 +1,6 @@
 @extends('layouts.backendtemplate')
 
-@section('title','Shows Page')
+@section('title','Cinema Seat Page')
 
 @section('content')
 <div class="content">
@@ -8,8 +8,8 @@
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header">
-            <h2 class="card-title d-inline"> Cinema Shows </h2>
-            <a href="{{route('shows.create')}}" class="btn btn-fill btn-primary float-right">New</a>
+            <h2 class="card-title d-inline"> Cinema Seat </h2>
+            <a href="{{route('seat.create')}}" class="btn btn-fill btn-primary float-right">New</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -20,16 +20,13 @@
                       No.
                     </th>
                     <th>
-                       Show Date
+                      Seat Number
                     </th>
                     <th>
-                      Show Time
+                      Price
                     </th>
                     <th>
-                      Hall No
-                    </th>
-                    <th>
-                      Movie No
+                      Hall
                     </th>
                     <th class="text-center">
                       Action
@@ -40,26 +37,23 @@
                   @php
                     $i=1;
                   @endphp
-                  @foreach($shows as $show)
+                  @foreach($seats as $seat)
                   <tr>
                     <td>
                       {{$i++}}
                     </td>
                     <td>
-                      {{$show->show_date}}
+                      {{$seat->seat_number}}
                     </td>
                     <td>
-                      {{$show->show_time}}
+                      {{$seat->seat_price}}
                     </td>
                     <td>
-                      {{$show->hall->name}}
-                    </td>
-                    <td>
-                      {{$show->movie->name}}
+                      {{$seat->hall->name}}
                     </td>
                     <td class="text-center">
-                      <a href="{{route('shows.edit',$show->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="#" data-id="{{route('shows.destroy',$show->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                      <a href="{{route('seat.edit',$seat->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                      <a href="#" data-id="{{route('seat.destroy',$seat->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
                     </td>
                   </tr>
                   @endforeach
@@ -71,6 +65,7 @@
       </div>
     </div>
 </div>
+
 {{-- Modal start --}}
 <div class="modal fade" id="deleteModal">
   <div class="modal-dialog">

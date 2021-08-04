@@ -30,7 +30,7 @@ class ShowController extends Controller
         $halls=Hall::all();
         $movies=Movie::all();
 
-        return view('backend.shows.create',compact('halls'),compact('movies'));
+        return view('backend.shows.create',compact('halls','movies'));
     }
 
     /**
@@ -71,7 +71,7 @@ class ShowController extends Controller
      * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function show(Shows $shows)
+    public function show(Show $show)
     {
         //
     }
@@ -82,13 +82,13 @@ class ShowController extends Controller
      * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shows $shows)
+    public function edit(Show $show)
     {
         
         $halls=Hall::all();
         $movies=Movie::all();
 
-        return view('backend.shows.edit',compact('shows'),compact('halls'),compact('movies'));
+        return view('backend.shows.edit',compact('show','halls','movies'));
     }
 
     /**
@@ -98,7 +98,7 @@ class ShowController extends Controller
      * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shows $shows)
+    public function update(Request $request, Show $show)
     {
         // dd($request);
 
@@ -113,12 +113,12 @@ class ShowController extends Controller
         // upload file
 
         // data insert
-         $shows = new Shows; // create new object
-        $shows->show_date = $request->show_date;
-        $shows->show_time = $request->show_time;
-        $shows->Hall_id = $request->Hall_id;
-        $shows->Movie_id = $request->Movie_id;
-        $shows->save();
+        
+        $show->show_date = $request->show_date;
+        $show->show_time = $request->show_time;
+        $show->Hall_id = $request->Hall_id;
+        $show->Movie_id = $request->Movie_id;
+        $show->save();
 
         // redirect
         return redirect()->route('shows.index');
@@ -130,9 +130,9 @@ class ShowController extends Controller
      * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shows $shows)
+    public function destroy(Show $show)
     {
-        $shows->delete();
+        $show->delete();
 
         // if on Delete Cascade
         // foreach($category->subcategories as $subcategory){

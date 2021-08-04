@@ -9,4 +9,13 @@ class Hall extends Model
 {
     use SoftDeletes;
     protected $fillable=['name','total_seat'];
+
+    public function seats(){
+        return $this->hasMany('App\Seat');
+    }
+
+    public function shows(){
+        return $this->hasMany('App\Show');
+    }
+
 }

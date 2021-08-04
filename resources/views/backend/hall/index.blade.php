@@ -1,6 +1,6 @@
 @extends('layouts.backendtemplate')
 
-@section('title','Hall Page')
+@section('title','Cinema Hall Page')
 
 @section('content')
 <div class="content">

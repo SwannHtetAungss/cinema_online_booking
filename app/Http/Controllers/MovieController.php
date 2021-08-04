@@ -14,7 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();
+        return view('backend.movie.index',compact('movies'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.movie.create');
     }
 
     /**
@@ -35,7 +36,45 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $request->validate([
+            "name" => "required",
+            "photo" => "required|mimes:jpeg,jpg,png",
+            "actor" => "required",
+            "actress" => "required",
+            "director" => "required",
+            "description" => "required",
+            "duration" => "required",
+            "release_date" => "required",
+            "genre" => "required",
+        ]);
+
+        // upload file
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('movieimg', $fileName, 'public');
+
+            // $path = '/storage/'.$filePath;
+        }
+
+        // data insert
+        $movie = new Movie; // create new object
+        $movie->name = $request->name;
+        $movie->photo = $filePath;
+        $movie->actor = $request->actor;
+        $movie->actress = $request->actress;
+        $movie->director = $request->director;
+        $movie->description = $request->description;
+        $movie->duration = $request->duration;
+        $movie->release_date = $request->release_date;
+        $movie->genre = $request->genre;
+        $movie->save();
+
+        // redirect
+        return redirect()->route('movie.index');
     }
 
     /**
@@ -57,7 +96,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('backend.movie.edit',compact('movie'));
     }
 
     /**
@@ -69,7 +108,46 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        // validation
+        $request->validate([
+            "name" => "required",
+            "actor" => "required",
+            "actress" => "required",
+            "director" => "required",
+            "description" => "required",
+            "duration" => "required",
+            "release_date" => "required",
+            "genre" => "required",
+        ]);
+
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('movieimg', $fileName, 'public');
+
+            // Delete old photo (try yourself)
+            // condition file exist
+            unlink(public_path('storage/').$movie->photo);
+        }else{
+            $filePath = $movie->photo;
+        }
+
+        // data insert
+        $movie->name = $request->name;
+        $movie->photo = $filePath;
+        $movie->actor = $request->actor;
+        $movie->actress = $request->actress;
+        $movie->director = $request->director;
+        $movie->description = $request->description;
+        $movie->duration = $request->duration;
+        $movie->release_date = $request->release_date;
+        $movie->genre = $request->genre;
+        $movie->save();
+
+        // redirect
+        return redirect()->route('movie.index');
     }
 
     /**
@@ -80,6 +158,13 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+
+        // if on Delete Cascade
+        // foreach($category->subcategories as $subcategory){
+        //     $subcategory->delete();
+        // }
+        // redirect
+        return redirect()->route('movie.index');
     }
 }
