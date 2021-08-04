@@ -16,8 +16,7 @@ class CreateShowsTable extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
             $table->date('show_date');
-            $table->date('start_time');
-            $table->date('end_time');
+            $table->time('show_time');
             $table->unsignedBigInteger('hall_id');
             $table->unsignedBigInteger('movie_id');
             $table->timestamps();
