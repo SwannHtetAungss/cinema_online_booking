@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Show;
 use Illuminate\Http\Request;
+use App\Hall;
+use App\Movie;
 
 class ShowController extends Controller
 {
@@ -14,7 +16,8 @@ class ShowController extends Controller
      */
     public function index()
     {
-        //
+        $shows = Show::all();
+        return view('backend.shows.index',compact('shows'));
     }
 
     /**
@@ -24,7 +27,10 @@ class ShowController extends Controller
      */
     public function create()
     {
-        //
+        $halls=Hall::all();
+        $movies=Movie::all();
+
+        return view('backend.shows.create',compact('halls'),compact('movies'));
     }
 
     /**
@@ -35,16 +41,37 @@ class ShowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+
+        // validation
+        $request->validate([
+            "show_date" => "required",
+            "show_time" => "required",
+            "Hall_id" => "required",
+            "Movie_id" => "required"
+        ]);
+
+        // upload file
+
+        // data insert
+        $shows = new Show; // create new object
+        $shows->show_date = $request->show_date;
+        $shows->show_time = $request->show_time;
+        $shows->Hall_id = $request->Hall_id;
+        $shows->Movie_id = $request->Movie_id;
+        $shows->save();
+
+        // redirect
+        return redirect()->route('shows.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Show  $show
+     * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function show(Show $show)
+    public function show(Shows $shows)
     {
         //
     }
@@ -52,34 +79,66 @@ class ShowController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Show  $show
+     * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function edit(Show $show)
+    public function edit(Shows $shows)
     {
-        //
+        
+        $halls=Hall::all();
+        $movies=Movie::all();
+
+        return view('backend.shows.edit',compact('shows'),compact('halls'),compact('movies'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Show  $show
+     * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Show $show)
+    public function update(Request $request, Shows $shows)
     {
-        //
+        // dd($request);
+
+        // validation
+       $request->validate([
+            "show_date" => "required",
+            "show_time" => "required",
+            "Hall_id" => "required",
+            "Movie_id" => "required"
+        ]);
+
+        // upload file
+
+        // data insert
+         $shows = new Shows; // create new object
+        $shows->show_date = $request->show_date;
+        $shows->show_time = $request->show_time;
+        $shows->Hall_id = $request->Hall_id;
+        $shows->Movie_id = $request->Movie_id;
+        $shows->save();
+
+        // redirect
+        return redirect()->route('shows.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Show  $show
+     * @param  \App\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Show $show)
+    public function destroy(Shows $shows)
     {
-        //
+        $shows->delete();
+
+        // if on Delete Cascade
+        // foreach($category->subcategories as $subcategory){
+        //     $subcategory->delete();
+        // }
+        // redirect
+        return redirect()->route('shows.index');
     }
 }
