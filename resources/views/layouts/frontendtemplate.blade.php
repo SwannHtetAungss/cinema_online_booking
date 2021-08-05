@@ -23,6 +23,8 @@
         <!-- Theme styles -->
         <link href="{{asset('frontend_assets/css/dot-icons.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('frontend_assets/css/theme.css')}}" rel="stylesheet" type="text/css">
+
+        @yield('seatcss')
     </head>
     <body class="body">
         <header class="header header-horizontal header-view-pannel">
@@ -31,7 +33,7 @@
                     <a class="navbar-brand" href="./">
                         <span class="logo-element">
                             <span class="logo-tape">
-                                <span class="svg-content svg-fill-theme" data-svg="./images/svg/logo-part.svg"></span>
+                                <span class="svg-content svg-fill-theme" data-svg="{{asset('frontend_assets/images/svg/logo-part.svg')}}"></span>
                             </span>
                             <span class="logo-text text-uppercase">
                                 <span>M</span>emico</span>
@@ -140,6 +142,115 @@
                                 <a class="nav-link" href="contact-us.html">Contact us</a>
                             </li>
                         </ul>
+
+                        @guest
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <!-- Left Side Of Navbar -->
+                                <ul class="navbar-nav mr-auto">
+            
+                                </ul>
+            
+                                <!-- Right Side Of Navbar -->
+                                <ul class="navbar-nav ml-auto">
+                                    <!-- Authentication Links -->
+                                    @guest
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                        @if (Route::has('register'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            </li>
+                                        @endif
+                                    @else
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }}
+                                            </a>
+            
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+            
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                                    @endguest
+                                </ul>
+                            </div>             
+                        @else
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
+                                    <a class="nav-link" href="#">{{ Auth::user()->name }}<i class="fa fa-caret-down pl-1" aria-hidden="true"></i></a>
+                                    <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
+                                    <ul class="collapse nav">
+                                        <li class="nav-item">
+                                            {{-- <a class="nav-link" href="homepage-1.html">Homepage 1</a> --}}
+                                            <a class="nav-link" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        
+                    </div>              
+                                    
+                        @endguest
+
+                        {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav mr-auto">
+        
+                            </ul>
+        
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div> --}}
                         <div class="navbar-extra">
                             <a class="btn-theme btn" href="#"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;Buy Ticket</a>
                         </div>
@@ -158,7 +269,7 @@
                         <a class="footer-logo" href="./">
                             <span class="logo-element">
                                 <span class="logo-tape">
-                                    <span class="svg-content svg-fill-theme" data-svg="./images/svg/logo-part.svg"></span>
+                                    <span class="svg-content svg-fill-theme" data-svg="{{asset('frontend_assets/images/svg/logo-part.svg')}}"></span>
                                 </span>
                                 <span class="logo-text text-uppercase">
                                     <span>M</span>emico</span>
@@ -279,5 +390,8 @@
         <script src="{{asset('frontend_assets/js/script.js')}}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4Qy67ZAILavdLyYV2ZwlShd0VAqzRXA&callback=initMap"></script>
         <script async defer src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js"></script>
+
+        {{-- Seat JS --}}
+        @yield('seatjs')
     </body>
 </html>
