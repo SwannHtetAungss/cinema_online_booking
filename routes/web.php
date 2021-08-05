@@ -42,7 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // For Frontend
 
-Route::get('detail', 'FrontendController@detail')->name('frontend.detail');
+Route::get('detail/{id}', 'FrontendController@detail')->name('frontend.detail');
 
 
 Route::get('/', 'FrontendController@home')->name('homepage');
