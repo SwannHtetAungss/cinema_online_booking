@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="section-text-white position-relative">
-    <div class="d-background" data-image-src="http://via.placeholder.com/1920x1080" data-parallax="scroll"></div>
+    <div class="d-background" data-image-src="{{asset('frontend_assets/images/cinemahall.jpg')}}" data-parallax="scroll"></div>
     <div class="d-background bg-theme-blacked"></div>
     <div class="mt-auto container position-relative">
         <div class="top-block-head text-uppercase">
@@ -844,7 +844,7 @@
     </div>
 </section>
 <section class="section-solid-long section-text-white position-relative">
-    <div class="d-background" data-image-src="http://via.placeholder.com/1920x1080" data-parallax="scroll"></div>
+    <div class="d-background" data-image-src="{{asset('frontend_assets/images/popcorn.jpg')}}" data-parallax="scroll"></div>
     <div class="d-background bg-gradient-black"></div>
     <div class="container position-relative">
         <div class="section-head">

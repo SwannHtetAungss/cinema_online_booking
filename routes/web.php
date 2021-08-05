@@ -37,7 +37,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // For Frontend
+
 Route::get('/', 'FrontendController@home')->name('homepage');
+
+
+Route::get('choose-seat', 'FrontendController@chooseSeat')->name('frontend.chooseSeat');
+ 
 
 
 
