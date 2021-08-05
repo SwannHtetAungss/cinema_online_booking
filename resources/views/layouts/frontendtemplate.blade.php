@@ -49,9 +49,9 @@
                     <div class="navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#">Homepage</a>
+                                <a class="nav-link" href="{{route('homepage')}}">Homepage</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                <ul class="collapse nav">
+                                {{-- <ul class="collapse nav">
                                     <li class="nav-item">
                                         <a class="nav-link" href="homepage-1.html">Homepage 1</a>
                                     </li>
@@ -61,7 +61,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="homepage-3.html">Homepage 3</a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
                                 <a class="nav-link" href="#" data-role="nav-toggler">Pages</a>

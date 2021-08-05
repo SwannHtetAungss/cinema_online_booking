@@ -15,7 +15,7 @@
 	        <div class="top-block-content">
 	            <h1 class="section-title">Movies info</h1>
 	            <div class="page-breadcrumbs">
-	                <a class="content-link" href="#">Home</a>
+	                <a class="content-link" href="{{route('homepage')}}">Home</a>
 	                <span class="text-theme mx-2"><i class="fas fa-chevron-right"></i></span>
 	                <a class="content-link" href="movies-blocks.html">Movies</a>
 	            </div>

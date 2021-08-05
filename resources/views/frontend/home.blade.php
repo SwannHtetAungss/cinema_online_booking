@@ -373,7 +373,7 @@
                 <div class="entity-showtime">
                     <div class="showtime-wrap">
                         <div class="showtime-item">
-                            <span class="disabled btn-time btn" aria-disabled="true">11 : 30</span>
+                            <a class="btn-time btn" aria-disabled="true" href="{{route('frontend.chooseSeat')}}">11 : 30</a>
                         </div>
                         <div class="showtime-item">
                             <a class="btn-time btn" aria-disabled="false" href="#">13 : 25</a>
