@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Movie;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function home(){
-        return view('frontend.home');
+        $movies = Movie::all();
+        return view('frontend.home',compact('movies'));
     }
 
 
-    public function detail(){
-        return view('frontend.detail');
+    public function detail($id)
+    {
+        $movie_details = Movie::find($id);
+        return view('frontend.detail',compact('movie_details'));
     }
 
     public function chooseSeat(){

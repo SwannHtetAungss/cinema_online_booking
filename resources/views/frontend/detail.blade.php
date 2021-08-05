@@ -26,7 +26,7 @@
                             <div class="movie-info-entity">
                                 <div class="entity-poster" data-role="hover-wrap">
                                     <div class="embed-responsive embed-responsive-poster">
-                                        <img class="embed-responsive-item" src="http://via.placeholder.com/340x510" alt="" />
+                                        <img class="embed-responsive-item" src="{{asset('storage/'.$movie_details->photo)}}" alt="" />
                                     </div>
                                     <div class="d-over bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-play">
