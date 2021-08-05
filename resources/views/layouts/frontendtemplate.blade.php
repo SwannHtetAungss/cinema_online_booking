@@ -23,6 +23,8 @@
         <!-- Theme styles -->
         <link href="{{asset('frontend_assets/css/dot-icons.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('frontend_assets/css/theme.css')}}" rel="stylesheet" type="text/css">
+
+        @yield('seatcss')
     </head>
     <body class="body">
         <header class="header header-horizontal header-view-pannel">
@@ -31,7 +33,7 @@
                     <a class="navbar-brand" href="./">
                         <span class="logo-element">
                             <span class="logo-tape">
-                                <span class="svg-content svg-fill-theme" data-svg="./images/svg/logo-part.svg"></span>
+                                <span class="svg-content svg-fill-theme" data-svg="{{asset('frontend_assets/images/svg/logo-part.svg')}}"></span>
                             </span>
                             <span class="logo-text text-uppercase">
                                 <span>M</span>emico</span>
@@ -158,7 +160,7 @@
                         <a class="footer-logo" href="./">
                             <span class="logo-element">
                                 <span class="logo-tape">
-                                    <span class="svg-content svg-fill-theme" data-svg="./images/svg/logo-part.svg"></span>
+                                    <span class="svg-content svg-fill-theme" data-svg="{{asset('frontend_assets/images/svg/logo-part.svg')}}"></span>
                                 </span>
                                 <span class="logo-text text-uppercase">
                                     <span>M</span>emico</span>
@@ -279,5 +281,8 @@
         <script src="{{asset('frontend_assets/js/script.js')}}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4Qy67ZAILavdLyYV2ZwlShd0VAqzRXA&callback=initMap"></script>
         <script async defer src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js"></script>
+
+        {{-- Seat JS --}}
+        @yield('seatjs')
     </body>
 </html>

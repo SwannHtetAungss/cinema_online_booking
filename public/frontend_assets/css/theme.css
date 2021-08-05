@@ -592,7 +592,7 @@ a:hover {
   background: #ff8a00;
 }
 .bg-theme-blacked {
-  background: rgba(255,138,0,0.7);
+  background: rgba(255,138,0,0.1);
   background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.85), rgba(0,0,0,0.85)) !important;
   background-image: -moz-linear-gradient(top, rgba(0,0,0,0.85), rgba(0,0,0,0.85)) !important;
   background-image: -o-linear-gradient(top, rgba(0,0,0,0.85), rgba(0,0,0,0.85)) !important;

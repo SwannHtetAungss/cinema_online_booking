@@ -29,5 +29,6 @@ Route::resource('movie','MovieController');
 
 // For Frontend
 Route::get('home', 'FrontendController@home')->name('frontend.home');
+Route::get('choose-seat', 'FrontendController@chooseSeat')->name('frontend.chooseSeat');
 
 
