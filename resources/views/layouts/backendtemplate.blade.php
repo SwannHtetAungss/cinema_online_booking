@@ -139,11 +139,13 @@
                 </ul>
               </li>
               <li class="dropdown nav-item">
+
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                   <div class="photo">
                     <img src="{{asset('backend_assets/img/anime3.png')}}" alt="Profile Photo">
                   </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                  <b class="caret d-none d-lg-block d-xl-block ml-2"></b>
                   <p class="d-lg-none">
                     Log out
                   </p>
@@ -152,7 +154,7 @@
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
                   <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item" data-toggle="modal" data-target="#logoutModal">Log out</a></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>
@@ -246,6 +248,30 @@
       </ul>
     </div>
   </div>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+              @csrf
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  {{-- <a class="btn btn-primary" href="login.html">Logout</a> --}}
+                  <input type="submit" class="btn btn-primary" name="btnlogout" value="Logout">
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
   <!--   Core JS Files   -->
   <script src="{{asset('backend_assets/js/core/jquery.min.js')}}"></script>
   <script src="{{asset('backend_assets/js/core/popper.min.js')}}"></script>

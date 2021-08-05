@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('frontend.home');
-});
+// Route::get('/', function () {
+//     return redirect()->route('frontend.home');
+// });
 
 // For backend
+Route::middleware('auth','role:admin')->group(function(){
+
 Route::resource('hall','HallController');
 
 Route::resource('shows','ShowController');
@@ -28,14 +30,14 @@ Route::resource('seat','SeatController');
 
 Route::resource('movie','MovieController');
 
-
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 // For Frontend
-Route::get('home', 'FrontendController@home')->name('frontend.home');
+Route::get('/', 'FrontendController@home')->name('homepage');
 
 
 
