@@ -29,13 +29,13 @@ Route::resource('seat','SeatController');
 Route::resource('movie','MovieController');
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/detail', 'DetailController@index')->name('detail');
 
 // For Frontend
 Route::get('home', 'FrontendController@home')->name('frontend.home');
-
+Route::get('detail', 'FrontendController@detail')->name('frontend.detail');
 
 
