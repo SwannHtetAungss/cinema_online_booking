@@ -30,19 +30,25 @@ Route::resource('seat','SeatController');
 
 Route::resource('movie','MovieController');
 
+
+
 });
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 // For Frontend
+
+Route::get('detail', 'FrontendController@detail')->name('frontend.detail');
+
 
 Route::get('/', 'FrontendController@home')->name('homepage');
 
 
 Route::get('choose-seat', 'FrontendController@chooseSeat')->name('frontend.chooseSeat');
  
-
 
 

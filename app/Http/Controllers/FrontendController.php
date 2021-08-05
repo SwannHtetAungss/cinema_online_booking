@@ -10,7 +10,13 @@ class FrontendController extends Controller
         return view('frontend.home');
     }
 
+
+    public function detail(){
+        return view('frontend.detail');
+    }
+
     public function chooseSeat(){
         return view('frontend.chooseSeat');
+
     }
 }
