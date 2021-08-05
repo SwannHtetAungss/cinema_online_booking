@@ -29,7 +29,7 @@
                                     </a>
                                 </div>
                                 <h4 class="entity-title">
-                                    <a class="content-link" href="movie-info-sidebar-right.html">Outsider</a>
+                                    <a class="content-link" href="{{route('frontend.detail')}}">Outsider</a>
                                 </h4>
                                 <div class="entity-category">
                                     <a class="content-link" href="movies-blocks.html">crime</a>,
@@ -345,7 +345,7 @@
             </div>
             <div class="entity-content">
                 <h4 class="entity-title">
-                    <a class="content-link" href="movie-info-sidebar-right.html">Outsider</a>
+                    <a class="content-link" href="{{route('frontend.detail')}}">Outsider</a>
                 </h4>
                 <div class="entity-category">
                     <a class="content-link" href="movies-blocks.html">crime</a>,
