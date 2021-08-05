@@ -75,6 +75,11 @@ body {
     max-width: 1120px;
   }
 }
+
+.for_input_focus:focus{
+  box-shadow: 0px 0px 6px #000;
+  border-color: transparent;
+}
 .row {
   margin-left: -1rem;
   margin-right: -1rem;
