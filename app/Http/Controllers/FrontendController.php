@@ -48,7 +48,8 @@ class FrontendController extends Controller
     }
 
     public function movie(){
-        return view('frontend.movie');
+        $movies = Movie::all();
+        return view('frontend.movie',compact('movies'));
     }
 
 
