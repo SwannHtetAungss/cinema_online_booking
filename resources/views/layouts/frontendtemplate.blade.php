@@ -139,7 +139,7 @@
                                 <a class="nav-link" href="movies-blocks.html">Movies</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact-us.html">Contact us</a>
+                                <a class="nav-link" href="{{route('contact')}}">Contact us</a>
                             </li>
                         </ul>
 

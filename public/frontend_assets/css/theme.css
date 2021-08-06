@@ -197,6 +197,12 @@ body {
   padding-right: 0.625rem;
   padding-left: 0.625rem;
 }
+
+/* Auth Design */
+.auth_btn:hover{
+  background-color: #f7881a;
+  border-color: #f7881a;
+}
 /*------------------------------------------------------------------
     [3. Typography]
 */
