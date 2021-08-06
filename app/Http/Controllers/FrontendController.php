@@ -16,8 +16,9 @@ class FrontendController extends Controller
 
     public function detail($id)
     {
+        $all_movies = Movie::all()->take(3);
         $movie_details = Movie::find($id);
-        return view('frontend.detail',compact('movie_details'));
+        return view('frontend.detail',compact('movie_details','all_movies'));
     }
 
     public function chooseSeat(){

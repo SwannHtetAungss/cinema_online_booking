@@ -37,10 +37,9 @@
                                     </div>
                                 </div>
                                 <div class="entity-content">
-                                    <h2 class="entity-title">Blick</h2>
+                                    <h2 class="entity-title">{{$movie_details->name}}</h2>
                                     <div class="entity-category">
-                                        <a class="content-link" href="movies-blocks.html">comedy</a>,
-                                        <a class="content-link" href="movies-blocks.html">detective</a>
+                                        <a class="content-link" href="movies-blocks.html">{{$movie_details->genre}}</a>
                                     </div>
                                     <div class="entity-info">
                                         <div class="info-lines">
@@ -51,25 +50,24 @@
                                             </div>
                                             <div class="info info-short">
                                                 <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                                <span class="info-text">130</span>
-                                                <span class="info-rest">&nbsp;min</span>
+                                                <span class="info-text">{{$movie_details->duration}}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <ul class="entity-list">
                                         <li>
-                                            <span class="entity-list-title">Release:</span>July 21, 2014 (Dolby Theatre), August 1, 2014 (United States)</li>
+                                            <span class="entity-list-title">Release Date:</span>{{$movie_details->release_date}}</li>
                                         <li>
                                             <span class="entity-list-title">Directed:</span>
-                                            <a class="content-link" href="#">Lindson Wardens</a>,
-                                            <a class="content-link" href="#">Anabelle One</a>
+                                            <a class="content-link" href="#">{{$movie_details->director}}</a>
                                         </li>
                                         <li>
-                                            <span class="entity-list-title">Starring:</span>
-                                            <a class="content-link" href="#">Octopus Wardens</a>,
-                                            <a class="content-link" href="#">Quanta Wardens</a>,
-                                            <a class="content-link" href="#">Anabelle Two</a>,
-                                            <a class="content-link" href="#">Anabelle Three</a>
+                                            <span class="entity-list-title">Actor:</span>
+                                            <a class="content-link" href="#">{{$movie_details->actor}}</a>
+                                        </li>
+                                        <li>
+                                            <span class="entity-list-title">Actress:</span>
+                                            <a class="content-link" href="#">{{$movie_details->actress}}</a>
                                         </li>
                                         <li>
                                             <span class="entity-list-title">Production company:</span>
@@ -81,8 +79,8 @@
                                             <a class="content-link" href="#">USA</a>,
                                             <a class="content-link" href="#">India</a>
                                         </li>
-                                        <li>
-                                            <span class="entity-list-title">Language:</span>english</li>
+                                        {{-- <li>
+                                            <span class="entity-list-title">Language:</span>english</li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -92,12 +90,8 @@
                                 <h2 class="section-title text-uppercase">Synopsis</h2>
                             </div>
                             <div class="section-description">
-                                <p class="lead">Lead text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                <h6 class="text-dark">Why do we use it?</h6>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                                <h6 class="text-dark">Where does it come from?</h6>
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                                <p class="lead">{{$movie_details->description}}</p>
+                                
                             </div>
                             <div class="section-bottom">
                                 <div class="row">
@@ -122,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="section-line">
+                        {{-- <div class="section-line">
                             <div class="section-head">
                                 <h2 class="section-title text-uppercase">Photos & videos</h2>
                             </div>
@@ -251,8 +245,8 @@
                             <div class="section-bottom">
                                 <a class="btn btn-theme" href="gallery.html">View All</a>
                             </div>
-                        </div>
-                        <div class="section-line">
+                        </div> --}}
+                        {{-- <div class="section-line">
                             <div class="section-head">
                                 <h2 class="section-title text-uppercase">Comments</h2>
                             </div>
@@ -428,7 +422,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                     </section>
                 </div>
                 <div class="sidebar section-long order-lg-last">
@@ -436,45 +430,24 @@
                         <div class="section-head">
                             <h2 class="section-title text-uppercase">Latest movies</h2>
                         </div>
-                        <div class="movie-short-line-entity">
-                            <a class="entity-preview" href="movie-info-sidebar-right.html">
-                                <span class="embed-responsive embed-responsive-16by9">
-                                    <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                                </span>
-                            </a>
-                            <div class="entity-content">
-                                <h4 class="entity-title">
-                                    <a class="content-link" href="movie-info-sidebar-right.html">Deadman skull</a>
-                                </h4>
-                                <p class="entity-subtext">11 nov 2018</p>
+                        @foreach ($all_movies as $all_movie)
+                            
+                            <div class="movie-short-line-entity">
+                                <a class="entity-preview" href="movie-info-sidebar-right.html">
+                                    <span class="embed-responsive embed-responsive-16by9">
+                                        <img class="embed-responsive-item" src="{{asset('storage/'.$all_movie->photo)}}" alt="" />
+                                    </span>
+                                </a>
+                                <div class="entity-content">
+                                    <h4 class="entity-title">
+                                        <a class="content-link" href="movie-info-sidebar-right.html">{{$all_movie->name}}</a>
+                                    </h4>
+                                    <p class="entity-subtext">{{$all_movie->release_date}}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="movie-short-line-entity">
-                            <a class="entity-preview" href="movie-info-sidebar-right.html">
-                                <span class="embed-responsive embed-responsive-16by9">
-                                    <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                                </span>
-                            </a>
-                            <div class="entity-content">
-                                <h4 class="entity-title">
-                                    <a class="content-link" href="movie-info-sidebar-right.html">Dream forest</a>
-                                </h4>
-                                <p class="entity-subtext">29 oct 2018</p>
-                            </div>
-                        </div>
-                        <div class="movie-short-line-entity">
-                            <a class="entity-preview" href="movie-info-sidebar-right.html">
-                                <span class="embed-responsive embed-responsive-16by9">
-                                    <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                                </span>
-                            </a>
-                            <div class="entity-content">
-                                <h4 class="entity-title">
-                                    <a class="content-link" href="movie-info-sidebar-right.html">Fall</a>
-                                </h4>
-                                <p class="entity-subtext">29 oct 2018</p>
-                            </div>
-                        </div>
+
+                        @endforeach
+                        
                     </section>
                     <section class="section-sidebar">
                         <div class="section-head">
@@ -495,11 +468,11 @@
                             </li>
                         </ul>
                     </section>
-                    <section class="section-sidebar">
+                    {{-- <section class="section-sidebar">
                         <a class="d-block" href="#">
                             <img class="w-100" src="http://via.placeholder.com/350x197" alt="" />
                         </a>
-                    </section>
+                    </section> --}}
                 </div>
             </div>
         </div>
