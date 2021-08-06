@@ -13,6 +13,10 @@ class FrontendController extends Controller
         return view('frontend.home',compact('movies'));
     }
 
+    public function movie(){
+        return view('frontend.movie');
+    }
+
 
     public function detail($id)
     {

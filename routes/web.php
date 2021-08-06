@@ -47,6 +47,7 @@ Route::get('detail/{id}', 'FrontendController@detail')->name('frontend.detail');
 
 Route::get('/', 'FrontendController@home')->name('homepage');
 
+Route::get('/movie', 'FrontendController@movie')->name('moviepage');
 
 Route::get('choose-seat', 'FrontendController@chooseSeat')->name('frontend.chooseSeat');
  
