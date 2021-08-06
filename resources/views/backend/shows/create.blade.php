@@ -35,7 +35,7 @@
 		        </div>
 
 		        <div class="row mb-3">
-		            <label for="inputHallId" class="col-sm-2 col-form-label">Hall NO</label>
+		            <label for="inputHallId" class="col-sm-2 col-form-label">Hall Name</label>
 		            <div class="col-sm-10">
 		            	<select name="Hall_id" class="form-control">
 		            		@foreach($halls as $hall)
@@ -50,7 +50,7 @@
 		        </div>
 
 		       <div class="row mb-3">
-		            <label for="inputMOvieId" class="col-sm-2 col-form-label">Movie NO</label>
+		            <label for="inputMOvieId" class="col-sm-2 col-form-label">Movie Name</label>
 		            <div class="col-sm-10">
 		              <select name="Movie_id" class="form-control">
 		            		@foreach($movies as $movie)
