@@ -139,7 +139,7 @@
                         @foreach($hall_show->shows as $show_time)
 
                         <div class="showtime-item">
-                            <a class="btn btn-danger" aria-disabled="true" href="{{route('frontend.chooseSeat')}}"> {{$show_time->show_time}} </a>
+                            <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat')}}"> {{$show_time->show_time}} </a>
                         </div>
                         @endforeach
                         {{-- <div class="showtime-item">
