@@ -25,7 +25,6 @@ Route::resource('hall','HallController');
 
 Route::resource('shows','ShowController');
 
-
 Route::resource('seat','SeatController');
 
 Route::resource('movie','MovieController');
@@ -47,7 +46,7 @@ Route::get('detail/{id}', 'FrontendController@detail')->name('frontend.detail');
 
 Route::get('/', 'FrontendController@home')->name('homepage');
 
-Route::get('movie', 'FrontendController@movie')->name('frontend.movie');
+Route::get('allmovie', 'FrontendController@movie')->name('frontend.allmovie');
 
 Route::get('choose-seat', 'FrontendController@chooseSeat')->name('frontend.chooseSeat');
  
