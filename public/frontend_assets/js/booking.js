@@ -34,16 +34,24 @@ $(document).ready(function(){
 		var status = false;
 
 		// true condition
-		$.each(book_arr,function(i,v){
-			// alert(id);
-			console.log(id,v.id,i);
-			if(id==v.id){
-				console.log(i);
-				book_arr.splice(i,1);
-				status = true;
-			}
+		var splice_array = Array();
+		if(book_arr.length > 0){
+			$.each(book_arr,function(i,v){
+				// alert(id);
+				// console.log(id,v.id,i);
+				// console.log(v);
+				if(v.id==id){
+					// console.log(i);
+					splice_array.push(i);
+					status = true;
+				}
 			
-		})
+			})
+			$.each(splice_array,function(i,v){
+				book_arr.splice(v,1);
+			})
+		}
+		
 
 		if(status==false){
 			book_arr.push(seat);

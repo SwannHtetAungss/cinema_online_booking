@@ -34,17 +34,23 @@
 	                    	<div class="theatre">
 							  	<div class="cinema-seats left">
 								    <div class="cinema-row">
-								    	@if($bookingSeats->isEmpty())
-									    	@foreach($seats as $seat)
-										    	<a class="btn btn-primary mr-3 addtocart" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
-											      	<h5 class="text-white">
-											      		{{$seat->seat_number}}
-											      	</h5>
-											    </a>
-										    @endforeach
-										@else
-											<h1>This is not Empty</h1>
-										@endif
+								    	<div class="container">
+								    		<div class="row">
+								    			<div class="col ml-4">
+								    				@if($bookingSeats->isEmpty())
+												    	@foreach($seats as $seat)
+													    	<a class="btn btn-primary mr-2 mb-3 addtocart" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+														      	<h5 class="text-white">
+														      		{{$seat->seat_number}}
+														      	</h5>
+														    </a>
+													    @endforeach
+													@else
+														<h1>This is not Empty</h1>
+													@endif
+								    			</div>
+								    		</div>
+								    	</div>
 								    </div>
 								</div>
 
