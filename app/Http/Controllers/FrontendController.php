@@ -55,8 +55,28 @@ class FrontendController extends Controller
 
     public function detail($id)
     {
+        $all_movies = Movie::all()->take(3);
         $movie_details = Movie::find($id);
-        return view('frontend.detail',compact('movie_details'));
+
+        $detail_show = Show::where('movie_id','=', $id)->get();
+        
+        foreach($detail_show as $detail_hall){
+            $hallid = $detail_hall->hall_id;
+            $detail_hall_show = Hall::where('id','=',$hallid)->groupBy('id')->get();
+        }
+        
+        if($detail_show->isEmpty()){
+            return view('frontend.detail',compact('movie_details','all_movies','detail_show'));
+        }else{
+            return view('frontend.detail',compact('movie_details','all_movies','detail_show','detail_hall_show'));
+        }
+        
+    }
+
+
+    public function contact(){
+        return view('frontend.contact');
+
     }
 
     public function chooseSeat(){

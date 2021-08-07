@@ -43,6 +43,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('detail/{id}', 'FrontendController@detail')->name('frontend.detail');
 
+Route::get('contact', 'FrontendController@contact')->name('contact');
+
 
 Route::get('/', 'FrontendController@home')->name('homepage');
 
