@@ -16,44 +16,48 @@
         <div class="top-block-footer">
             <div class="slick-spaced slick-carousel" data-slick-view="navigation responsive-4">
                 <div class="slick-slides">
-                    @foreach ($movies as $movie)
-                        
-                    <div class="slick-slide">
-                        <article class="poster-entity" data-role="hover-wrap">
-                            <div class="embed-responsive embed-responsive-poster">
-                                <img class="embed-responsive-item" src="{{asset('storage/'.$movie->photo)}}" alt="" />
-                            </div>
-                            <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
-                            <div class="d-over bg-highlight-bottom">
-                                <div class="collapse animated faster entity-play" data-show-class="fadeIn show" data-hide-class="fadeOut show">
-                                    <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                                        <span class="icon-content"><i class="fas fa-play"></i></span>
-                                    </a>
-                                </div>
-                                <h4 class="entity-title">
-                                    <a class="content-link" href="{{route('frontend.detail',$movie->id)}}">{{$movie->name}}</a>
-                                </h4>
-                                <div class="entity-category">
-                                    <a class="content-link" href="movies-blocks.html">{{$movie->genre}}</a>
-                                </div>
-                                <div class="entity-info">
-                                    <div class="info-lines">
-                                        <div class="info info-short">
-                                            <span class="text-theme info-icon"><i class="fas fa-star"></i></span>
-                                            <span class="info-text">8,1</span>
-                                            <span class="info-rest">/10</span>
-                                        </div>
-                                        <div class="info info-short">
-                                            <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                            <span class="info-text">{{$movie->duration}}</span>
-                                            {{-- <span class="info-rest">&nbsp;min</span> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+                    @foreach ($show_now as $now_show)
+                        @foreach ($movies as $movie)
 
+                            @if($now_show->movie_id == $movie->id)
+                                <div class="slick-slide">
+                                    <article class="poster-entity" data-role="hover-wrap">
+                                        <div class="embed-responsive embed-responsive-poster">
+                                            <img class="embed-responsive-item" src="{{asset('storage/'.$movie->photo)}}" alt="" />
+                                        </div>
+                                        <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
+                                        <div class="d-over bg-highlight-bottom">
+                                            <div class="collapse animated faster entity-play" data-show-class="fadeIn show" data-hide-class="fadeOut show">
+                                                <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                                    <span class="icon-content"><i class="fas fa-play"></i></span>
+                                                </a>
+                                            </div>
+                                            <h4 class="entity-title">
+                                                <a class="content-link" href="{{route('frontend.detail',$movie->id)}}">{{$movie->name}}</a>
+                                            </h4>
+                                            <div class="entity-category">
+                                                <a class="content-link" href="movies-blocks.html">{{$movie->genre}}</a>
+                                            </div>
+                                            <div class="entity-info">
+                                                <div class="info-lines">
+                                                    <div class="info info-short">
+                                                        <span class="text-theme info-icon"><i class="fas fa-star"></i></span>
+                                                        <span class="info-text">8,1</span>
+                                                        <span class="info-rest">/10</span>
+                                                    </div>
+                                                    <div class="info info-short">
+                                                        <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
+                                                        <span class="info-text">{{$movie->duration}}</span>
+                                                        {{-- <span class="info-rest">&nbsp;min</span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            @endif
+
+                        @endforeach
                     @endforeach
                     
                 </div>
@@ -85,74 +89,86 @@
         </div>
 
         @foreach($hall_shows as $hall_show)
-        <article class="movie-line-entity">
-            <div class="entity-poster" data-role="hover-wrap">
-                <div class="embed-responsive embed-responsive-poster">
-                    @php 
-                        $show = $hall_show->shows;
-                        $showmovie = $show[0]->movie;
-                        // var_dump($movie->name);
-                    @endphp
-                    <img class="embed-responsive-item" src="{{asset('storage/'.$showmovie->photo)}}" alt="" />
-                </div>
-                <div class="d-over bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
-                    <div class="entity-play">
-                        <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                            <span class="icon-content"><i class="fas fa-play"></i></span>
-                        </a>
+        @foreach($show_now as $now)
+            @if($now->hall_id == $hall_show->id)
+            <article class="movie-line-entity">
+                @foreach($movies as $showmovie)
+                @if($now->movie_id == $showmovie->id)
+                <div class="entity-poster" data-role="hover-wrap">
+                    <div class="embed-responsive embed-responsive-poster">
+                        {{-- @php 
+                            $show = $hall_show->shows;
+                            $showmovie = $show[0]->movie;
+                            
+                            // dd($showstatus);
+                            dd($showmovie);
+                        @endphp --}}
+                        <img class="embed-responsive-item" src="{{asset('storage/'.$showmovie->photo)}}" alt="" />
                     </div>
-                </div>
-            </div>
-
-            <div class="entity-content">
-                <h4 class="entity-title">
-                    <a class="content-link text-uppercase" href=""> {{$showmovie->name}} </a>
-                </h4>
-                <div class="entity-category">
-                    <a class="content-link" href="movies-blocks.html"> {{$showmovie->genre}} </a>
-                </div>
-                <div class="entity-info">
-                    <div class="info-lines">
-                        <div class="info info-short">
-                            <span class="text-theme info-icon"><i class="fas fa-star"></i></span>
-                            <span class="info-text">8,1</span>
-                            <span class="info-rest">/10</span>
-                        </div>
-                        <div class="info info-short">
-                            <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                            <span class="info-text">{{$showmovie->duration}}</span>
-                            {{-- <span class="info-rest">&nbsp;min</span> --}}
+                    <div class="d-over bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
+                        <div class="entity-play">
+                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                <span class="icon-content"><i class="fas fa-play"></i></span>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <p class="text-short entity-text">
-                    {{$showmovie->description}}
-                </p>
-            </div>
-            <div class="entity-extra">
-                <div class="text-uppercase entity-extra-title">
-                    <h3 class="text-danger">{{$hall_show->name}}</h3>
+
+                <div class="entity-content">
+                    <h4 class="entity-title">
+                        <a class="content-link text-uppercase" href=""> {{$showmovie->name}} </a>
+                    </h4>
+                    <div class="entity-category">
+                        <a class="content-link" href="movies-blocks.html"> {{$showmovie->genre}} </a>
+                    </div>
+                    <div class="entity-info">
+                        <div class="info-lines">
+                            <div class="info info-short">
+                                <span class="text-theme info-icon"><i class="fas fa-star"></i></span>
+                                <span class="info-text">8,1</span>
+                                <span class="info-rest">/10</span>
+                            </div>
+                            <div class="info info-short">
+                                <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
+                                <span class="info-text">{{$showmovie->duration}}</span>
+                                {{-- <span class="info-rest">&nbsp;min</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-short entity-text">
+                        {{$showmovie->description}}
+                    </p>
                 </div>
-                <div class="entity-showtime">
-                    <div class="showtime-wrap">
-                        {{-- {{$hall_show->shows}} --}}
-                        @foreach($hall_show->shows as $show_time)
+                @endif
+                @endforeach
+                <div class="entity-extra">
+                    <div class="text-uppercase entity-extra-title">
+                        <h3 class="text-danger">{{$hall_show->name}}</h3>
+                    </div>
+                    <div class="entity-showtime">
+                        <div class="showtime-wrap">
+                            {{-- {{$hall_show->shows}} --}}
+                            @foreach($hall_show->shows as $show_time)
+                            {{-- @foreach($show_now as $show_time) --}}
+                            @if($show_time->status == 1)
+                                <div class="showtime-item">
+                                    <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat')}}"> {{$show_time->show_time}} </a>
+                                </div>
+                            @endif
+                            @endforeach
+                            {{-- <div class="showtime-item">
+                                <a class="btn btn-danger" aria-disabled="false" href="#">13 : 25</a>
+                            </div>
+                            <div class="showtime-item">
+                                <a class="btn-time btn" aria-disabled="false" href="#">16 : 07</a>
+                            </div> --}}
 
-                        <div class="showtime-item">
-                            <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat')}}"> {{$show_time->show_time}} </a>
                         </div>
-                        @endforeach
-                        {{-- <div class="showtime-item">
-                            <a class="btn btn-danger" aria-disabled="false" href="#">13 : 25</a>
-                        </div>
-                        <div class="showtime-item">
-                            <a class="btn-time btn" aria-disabled="false" href="#">16 : 07</a>
-                        </div> --}}
-
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
+            @endif
+        @endforeach
         @endforeach
     </div>
 </section>
@@ -165,125 +181,55 @@
         </div>
         <div class="slick-spaced slick-carousel" data-slick-view="navigation single">
             <div class="slick-slides">
-                <div class="slick-slide">
-                    <article class="movie-line-entity">
-                        <div class="entity-preview">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                            </div>
-                            <div class="d-over">
-                                <div class="entity-play">
-                                    <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                                        <span class="icon-content"><i class="fas fa-play"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="entity-content">
-                            <h4 class="entity-title">
-                                <a class="content-link" href="movie-info-sidebar-right.html">One way road</a>
-                            </h4>
-                            <div class="entity-category">
-                                <a class="content-link" href="movies-blocks.html">sport</a>,
-                                <a class="content-link" href="movies-blocks.html">musical</a>
-                            </div>
-                            <div class="entity-info">
-                                <div class="info-lines">
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
-                                        <span class="info-text">18 jul 2020</span>
+                @foreach ($show_soon as $soon_show)
+                    @foreach ($movies as $movie)
+
+                        @if($soon_show->movie_id == $movie->id)
+                            <div class="slick-slide">
+                                <article class="movie-line-entity">
+                                    <div class="entity-preview">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <img class="embed-responsive-item" src="{{asset('storage/'.$movie->photo)}}" alt="" />
+                                        </div>
+                                        {{-- <div class="d-over">
+                                            <div class="entity-play">
+                                                <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                                    <span class="icon-content"><i class="fas fa-play"></i></span>
+                                                </a>
+                                            </div>
+                                        </div> --}}
                                     </div>
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                        <span class="info-text">130</span>
-                                        <span class="info-rest">&nbsp;min</span>
+                                    <div class="entity-content">
+                                        <h4 class="entity-title">
+                                            <a class="content-link" href="{{route('frontend.detail',$movie->id)}}">{{$movie->name}}</a>
+                                        </h4>
+                                        <div class="entity-category">
+                                            <a class="content-link" href="movies-blocks.html">{{$movie->genre}}</a>
+                                        </div>
+                                        <div class="entity-info">
+                                            <div class="info-lines">
+                                                <div class="info info-short">
+                                                    <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
+                                                    <span class="info-text">{{$soon_show->show_date}}</span>
+                                                </div>
+                                                <div class="info info-short">
+                                                    <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
+                                                    <span class="info-text">{{$movie->duration}}</span>
+                                                    {{-- <span class="info-rest">&nbsp;min</span> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-short entity-text">
+                                            {{$movie->description}}
+                                        </p>
                                     </div>
-                                </div>
+                                </article>
                             </div>
-                            <p class="text-short entity-text">In luctus ac nisi vel vulputate. Sed blandit augue ut ex eleifend, ac posuere dolor sollicitudin. Mauris tempus euismod mauris id semper. Vestibulum ut vulputate elit, id ultricies libero. Aenean laoreet mi augue, at iaculis nisi aliquam eu. Quisque nec ipsum vehicula diam egestas porttitor eu vitae ex. Curabitur auctor tortor elementum leo faucibus, sit amet imperdiet ante maximus. Nulla viverra tortor dignissim purus placerat dapibus nec ut orci. Quisque efficitur nulla quis pulvinar dapibus. Phasellus sodales tortor sit amet sagittis condimentum. Donec ac ultricies ex. In odio leo, rhoncus aliquam bibendum sit amet, varius sit amet nisl.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-                <div class="slick-slide">
-                    <article class="movie-line-entity">
-                        <div class="entity-preview">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                            </div>
-                            <div class="d-over">
-                                <div class="entity-play">
-                                    <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                                        <span class="icon-content"><i class="fas fa-play"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="entity-content">
-                            <h4 class="entity-title">
-                                <a class="content-link" href="movie-info-sidebar-right.html">Dance story</a>
-                            </h4>
-                            <div class="entity-category">
-                                <a class="content-link" href="movies-blocks.html">drama</a>
-                            </div>
-                            <div class="entity-info">
-                                <div class="info-lines">
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
-                                        <span class="info-text">14 jul 2020</span>
-                                    </div>
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                        <span class="info-text">140</span>
-                                        <span class="info-rest">&nbsp;min</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-short entity-text">In luctus ac nisi vel vulputate. Sed blandit augue ut ex eleifend, ac posuere dolor sollicitudin. Mauris tempus euismod mauris id semper. Vestibulum ut vulputate elit, id ultricies libero. Aenean laoreet mi augue, at iaculis nisi aliquam eu. Quisque nec ipsum vehicula diam egestas porttitor eu vitae ex. Curabitur auctor tortor elementum leo faucibus, sit amet imperdiet ante maximus. Nulla viverra tortor dignissim purus placerat dapibus nec ut orci. Quisque efficitur nulla quis pulvinar dapibus. Phasellus sodales tortor sit amet sagittis condimentum. Donec ac ultricies ex. In odio leo, rhoncus aliquam bibendum sit amet, varius sit amet nisl.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-                <div class="slick-slide">
-                    <article class="movie-line-entity">
-                        <div class="entity-preview">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <img class="embed-responsive-item" src="http://via.placeholder.com/1920x1080" alt="" />
-                            </div>
-                            <div class="d-over">
-                                <div class="entity-play">
-                                    <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                                        <span class="icon-content"><i class="fas fa-play"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="entity-content">
-                            <h4 class="entity-title">
-                                <a class="content-link" href="movie-info-sidebar-right.html">Cloud 10</a>
-                            </h4>
-                            <div class="entity-category">
-                                <a class="content-link" href="movies-blocks.html">drama</a>,
-                                <a class="content-link" href="movies-blocks.html">superhero</a>
-                            </div>
-                            <div class="entity-info">
-                                <div class="info-lines">
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
-                                        <span class="info-text">19 oct 2020</span>
-                                    </div>
-                                    <div class="info info-short">
-                                        <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                        <span class="info-text">110</span>
-                                        <span class="info-rest">&nbsp;min</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-short entity-text">Vivamus dolor ex, viverra ut facilisis et, euismod et quam. Aliquam sit amet mattis velit, ullamcorper venenatis magna. Aenean ac maximus magna. Proin pharetra venenatis tortor, ac suscipit est ultrices vitae. Mauris vulputate, nisl in lacinia dignissim, libero justo vehicula arcu, a porttitor quam erat ac dui. Suspendisse potenti. Maecenas sit amet interdum sem. Vestibulum sit amet volutpat mauris, ut gravida velit. Donec ultricies, eros ut finibus volutpat, enim ligula tempus enim, non bibendum libero tellus at velit. Aenean placerat egestas ullamcorper.
-                            </p>
-                        </div>
-                    </article>
-                </div>
+                        @endif
+
+                    @endforeach
+                @endforeach
+
             </div>
             <div class="slick-arrows">
                 <div class="slick-arrow-prev">

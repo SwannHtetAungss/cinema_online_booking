@@ -15,8 +15,8 @@
             <form method="post" action="{{route('shows.update',$show->id)}}">
             	@csrf
           		@method('PUT')
-            		<div class="row mb-3">
-		            <label for="inputShowDate" class="col-sm-2 col-form-label">Show Date</label>
+				<div class="row mb-3">
+					<label for="inputShowDate" class="col-sm-2 col-form-label">Show Date</label>
 		            <div class="col-sm-10">
 		              <input type="date" value="{{$show->show_date}}" name="show_date" class="form-control" id="inputShowDate">
 		              @if ($errors->has('show_date'))
@@ -56,12 +56,29 @@
 		            <div class="col-sm-10">
 		              <select name="Movie_id" class="form-control">
 		            		@foreach($movies as $movie)
-		            			<option value="{{$movie->id}}" @if($hall->id==$show->movie_id) {{'selected'}} @endif >{{$movie->name}}</option>
+		            			<option value="{{$movie->id}}" @if($movie->id==$show->movie_id) {{'selected'}} @endif >{{$movie->name}}</option>
 		            		@endforeach
-		            	</select>
+		            </select>
 		              
 		              @if ($errors->has('Movie_id'))
 		                <span class="text-danger">{{ $errors->first('Movie_id') }}</span>
+		              @endif
+		            </div>
+		        </div>
+
+				<div class="row mb-3">
+					<label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
+		            <div class="col-sm-10">
+						<select name="status" class="form-control">
+		            		
+		            			<option value="0" @if($show->status== 0) {{'selected'}} @endif >Expired</option>
+		            			<option value="1" @if($show->status== 1) {{'selected'}} @endif >Now</option>
+		            			<option value="2" @if($show->status== 2) {{'selected'}} @endif >Soon</option>
+		            		
+		            </select>
+		              {{-- <input type="number" value="{{$show->status}}" name="status" class="form-control" id="inputStatus"> --}}
+		              @if ($errors->has('status'))
+		                <span class="text-danger">{{ $errors->first('status') }}</span>
 		              @endif
 		            </div>
 		        </div>

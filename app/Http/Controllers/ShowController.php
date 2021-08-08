@@ -48,7 +48,8 @@ class ShowController extends Controller
             "show_date" => "required",
             "show_time" => "required",
             "Hall_id" => "required",
-            "Movie_id" => "required"
+            "Movie_id" => "required",
+            "status" => "required"
         ]);
 
         // upload file
@@ -59,7 +60,9 @@ class ShowController extends Controller
         $shows->show_time = $request->show_time;
         $shows->Hall_id = $request->Hall_id;
         $shows->Movie_id = $request->Movie_id;
+        $shows->status = $request->status;
         $shows->save();
+        
 
         // redirect
         return redirect()->route('shows.index');
@@ -107,7 +110,9 @@ class ShowController extends Controller
             "show_date" => "required",
             "show_time" => "required",
             "Hall_id" => "required",
-            "Movie_id" => "required"
+            "Movie_id" => "required",
+            "status" => "required"
+
         ]);
 
         // upload file
@@ -118,6 +123,7 @@ class ShowController extends Controller
         $show->show_time = $request->show_time;
         $show->Hall_id = $request->Hall_id;
         $show->Movie_id = $request->Movie_id;
+        $show->status = $request->status;
         $show->save();
 
         // redirect

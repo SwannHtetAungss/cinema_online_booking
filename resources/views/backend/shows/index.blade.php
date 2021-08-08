@@ -31,6 +31,9 @@
                     <th>
                       Movie No
                     </th>
+                    <th>
+                      Status
+                    </th>
                     <th class="text-center">
                       Action
                     </th>
@@ -56,6 +59,15 @@
                     </td>
                     <td>
                       {{$show->movie->name}}
+                    </td>
+                    <td>
+                      @if($show->status == 0)
+                      <h4 class="text-danger">Expire</h4>
+                      @elseif($show->status == 1)
+                      <h4 class="text-success">Now</h4>
+                      @elseif($show->status == 2)
+                      <h4 style="color:yellow">Soon</h4>
+                      @endif
                     </td>
                     <td class="text-center">
                       <a href="{{route('shows.edit',$show->id)}}" class="btn btn-primary btn-sm">Edit</a>

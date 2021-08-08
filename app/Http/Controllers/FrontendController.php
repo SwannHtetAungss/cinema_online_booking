@@ -29,28 +29,36 @@ class FrontendController extends Controller
         //                     ->join('shows','shows.hall_id','=','halls.id')
         //                     ->where('halls.id','=','shows.hall_id')
         //                     ->get();
-
+        
+        $show_now = Show::where('status','=','1')->groupBy('movie_id')->get();
+        $show_soon = Show::where('status','=','2')->groupBy('movie_id')->get();
         $movies = Movie::all();
 
         $halls = Hall::all();
         $hall_shows = [];
         foreach($halls as $hall){
             $shows = $hall->shows;
+            // dd($shows[0]->status);
+            // dd($shows);
             if($shows->isNotEmpty()){
                 array_push($hall_shows, $hall);
                 // echo $hall_shows;
+               
             }
         }
+        // dd($hall_shows);
         // die();
         // dd($hall_shows);
-        return view('frontend.home',compact('hall_shows','movies'));
+        return view('frontend.home',compact('hall_shows','movies','show_now','show_soon'));
 
     }
 
 
     public function detail($id)
     {
-        $all_movies = Movie::all()->take(3);
+        $show_now = Show::where('status','=','1')->groupBy('movie_id')->get();
+
+        $all_movies = Movie::all();
         $movie_details = Movie::find($id);
 
         $detail_show = Show::where('movie_id','=', $id)->get();
@@ -61,9 +69,9 @@ class FrontendController extends Controller
         }
         
         if($detail_show->isEmpty()){
-            return view('frontend.detail',compact('movie_details','all_movies','detail_show'));
+            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show'));
         }else{
-            return view('frontend.detail',compact('movie_details','all_movies','detail_show','detail_hall_show'));
+            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show','detail_hall_show'));
         }
         
     }

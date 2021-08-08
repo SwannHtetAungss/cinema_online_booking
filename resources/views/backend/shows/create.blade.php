@@ -64,6 +64,22 @@
 		            </div>
 		        </div>
 
+				<div class="row mb-3">
+		            <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
+		            <div class="col-sm-10">
+						<select name="status" class="form-control">
+		            		
+		            			<option value="0">Expired</option>
+		            			<option value="1">Now</option>
+		            			<option value="2">Soon</option>
+		            		
+		            	</select>
+		              @if ($errors->has('status'))
+		                <span class="text-danger">{{ $errors->first('status') }}</span>
+		              @endif
+		            </div>
+		        </div>
+
            
           </div>
           <div class="card-footer">
