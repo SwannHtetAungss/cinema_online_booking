@@ -9,7 +9,7 @@
 @section('content')
 
 	<section class="after-head d-flex section-text-white position-relative">
-	    <div class="d-background" data-image-src="http://via.placeholder.com/1920x1080" data-parallax="scroll"></div>
+	    <div class="d-background" data-image-src="{{asset('frontend_assets/images/seat.jpg')}}" data-parallax="scroll"></div>
 	    <div class="d-background bg-black-80"></div>
 	    <div class="top-block top-inner container">
 	        <div class="top-block-content">
@@ -33,84 +33,24 @@
 	                    <div class="section-description">
 	                    	<div class="theatre">
 							  	<div class="cinema-seats left">
-								    <div class="cinema-row row-1">
-								      <div class="seat"><h5 class="text-white text-center">A1</h5></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-2">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-3">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-4">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-5">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-6">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-7">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								    </div>
-
-								    <div class="cinema-row row-8">
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
-								      <div class="seat"></div>
+								    <div class="cinema-row">
+								    	<div class="container">
+								    		<div class="row">
+								    			<div class="col ml-4">
+								    				@if($bookingSeats->isEmpty())
+												    	@foreach($seats as $seat)
+													    	<a class="btn btn-primary mr-2 mb-3 addtocart" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+														      	<h5 class="text-white">
+														      		{{$seat->seat_number}}
+														      	</h5>
+														    </a>
+													    @endforeach
+													@else
+														<h1>This is not Empty</h1>
+													@endif
+								    			</div>
+								    		</div>
+								    	</div>
 								    </div>
 								</div>
 
@@ -197,12 +137,51 @@
 	                </div>
 	                <div class="movie-short-line-entity">
 	                    <div class="entity-content">
+	                    	<table cellpadding="5">
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Hall</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$seat->hall->name}}</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Movie</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$show->movie->name}}</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Time</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$show->show_time}}</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Date</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$show->show_date}}</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Tickets</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2 count">: 0</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Total</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2 total">: 0</h4> </td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td> <h4 class="entity-title mb-2">Seats</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2 snumber">: </h4> </td>
+	                    		</tr>
+	                    	</table>
+
+	                    	{{-- <h4 class="entity-title mb-2">
+	                           	Hall
+	                        </h4>
+
 	                        <h4 class="entity-title mb-2">
 	                           	Movie
 	                        </h4>
 
 	                        <h4 class="entity-title mb-2">
 	                           	Time
+	                        </h4>
+
+	                        <h4 class="entity-title mb-2">
+	                           	Date
 	                        </h4>
 
 	                        <h4 class="entity-title mb-2">
@@ -215,20 +194,28 @@
 
 	                        <h4 class="entity-title mb-2">
 	                           	Seats
-	                        </h4>
+	                        </h4> --}}
 	                    </div>
 
-	                    <div class="entity-content">
-	                        <h4 class="entity-title mb-2">
-	                            : Deadman skull
+	                    {{-- <div class="entity-content">
+	                    	<h4 class="entity-title mb-2">
+	                        	: {{$seat->hall->name}}
 	                        </h4>
 
 	                        <h4 class="entity-title mb-2">
-	                            : April 3, 21:00
+	                            : {{$show->movie->name}}
 	                        </h4>
 
 	                        <h4 class="entity-title mb-2">
-	                            : 2
+	                            : {{$show->show_time}}
+	                        </h4>
+
+	                        <h4 class="entity-title mb-2">
+	                            : {{$show->show_date}}
+	                        </h4>
+
+	                        <h4 class="entity-title mb-2 count">
+	                            : 0
 	                        </h4>
 
 	                        <h4 class="entity-title mb-2">
@@ -238,7 +225,7 @@
 	                        <h4 class="entity-title mb-2">
 	                            : A1,A2
 	                        </h4>
-	                    </div>
+	                    </div> --}}
 	                </div>
 	            </section>
 	            
@@ -261,6 +248,10 @@
 
 @section('seatjs')
 	<script type="text/javascript" src="{{asset('frontend_assets/js/seat.js')}}"></script>
+@endsection
+
+@section('addtocart')
+	<script type="text/javascript" src="{{asset('frontend_assets/js/booking.js')}}"></script>
 @endsection
 
 

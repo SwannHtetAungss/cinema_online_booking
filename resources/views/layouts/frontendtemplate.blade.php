@@ -68,7 +68,7 @@
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">Movies</a>
+                                        <a class="nav-link" href="#"data-role="nav-toggler">Movies</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
                                             <li class="nav-item">
@@ -136,7 +136,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="movies-blocks.html">Movies</a>
+                                <a class="nav-link" href="{{route('frontend.allmovie')}}">Movies</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('contact')}}">Contact us</a>
@@ -393,5 +393,6 @@
 
         {{-- Seat JS --}}
         @yield('seatjs')
+        @yield('addtocart')
     </body>
 </html>

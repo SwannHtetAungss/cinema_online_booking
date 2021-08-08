@@ -136,7 +136,11 @@
                                             
                                             @foreach($detail_show as $detail_shows)
                                             <div class="showtime-item">
+
                                                 <a class="btn btn-outline-danger px-2" aria-disabled="true" @if($detail_shows->status != 1) style="pointer-events: none; color:gray;border-color:gray" @endif href="{{route('frontend.chooseSeat')}}"> {{$detail_shows->show_time}} </a>
+
+                                                <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$detail_hall_show[0]->id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+
                                             </div>
                                             @endforeach
                                             

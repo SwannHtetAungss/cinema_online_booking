@@ -162,9 +162,30 @@
                             <div class="showtime-item">
                                 <a class="btn-time btn" aria-disabled="false" href="#">16 : 07</a>
                             </div> --}}
-
                         </div>
+
+                            {{-- <p class="text-short entity-text">
+                                {{$showmovie->description}}
+                            </p> --}}
                     </div>
+                    {{-- <div class="entity-extra">
+                        <div class="text-uppercase entity-extra-title">
+                            <h3 class="text-danger">{{$hall_show->name}}</h3>
+                        </div>
+                        <div class="entity-showtime">
+                            <div class="showtime-wrap"> --}}
+                                {{-- {{$hall_show->shows}} --}}
+                                {{-- @foreach($hall_show->shows as $show_time)
+                                <div class="showtime-item">
+                                    <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$show_time->hall_id,$show_time->id])}}"> {{$show_time->show_time}} </a>
+                                </div>
+                                @endforeach --}}
+                                {{-- <div class="showtime-item">
+                                    <a class="btn btn-danger" aria-disabled="false" href="#">13 : 25</a>
+
+                                </div>
+                            </div>
+                        </div> --}}
                 </div>
             </article>
             @endif
