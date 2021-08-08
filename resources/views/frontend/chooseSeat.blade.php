@@ -13,11 +13,11 @@
 	    <div class="d-background bg-black-80"></div>
 	    <div class="top-block top-inner container">
 	        <div class="top-block-content">
-	            <h1 class="section-title">Movies info</h1>
+	            <h1 class="section-title">Booking NOW</h1>
 	            <div class="page-breadcrumbs">
 	                <a class="content-link" href="{{route('homepage')}}">Home</a>
 	                <span class="text-theme mx-2"><i class="fas fa-chevron-right"></i></span>
-	                <a class="content-link" href="movies-blocks.html">Movies</a>
+	                <span>Choose-seat</span>
 	            </div>
 	        </div>
 	    </div>
@@ -47,7 +47,7 @@
 													    @endforeach
 													@else
 														@foreach($seats as $seat)
-													    	<a class="btn mr-2 mb-3 addtocart @foreach($seatBookeds as $seatBooked) @if($seatBooked->seat_id==$seat->id) {{'btn-danger disabled'}} @else {{'btn-primary'}} @endif @endforeach" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+													    	<a class="btn mr-2 mb-3 addtocart @foreach($seatBookeds as $seatBooked) @if($seatBooked->seat_id==$seat->id && $seatBooked->show_id==$show->id) {{'btn-danger disabled'}} @else {{'btn-primary'}} @endif @endforeach" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
 														      	<h5 class="text-white">
 														      		{{$seat->seat_number}}
 														      	</h5>
@@ -236,7 +236,12 @@
 	            </section>
 	            
 	            <section class="section-sidebar">
-	                <a class="btn btn-theme mb-2 d-block booking" data-total="" data-snumber="" data-showid="{{$show->id}}" href="#">Booking Now</a>
+
+	            	@guest
+	                	<a class="btn btn-theme mb-2 d-block booking" href="{{ route('login') }}">Booking Now</a>
+	                @else
+	                	<a class="btn btn-theme mb-2 d-block booking" data-total="" data-snumber="" data-showid="{{$show->id}}" href="#">Booking Now</a>
+	                @endguest
 
 	                <table>
 	                	<tr>

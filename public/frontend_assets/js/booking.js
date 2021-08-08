@@ -114,6 +114,15 @@ $(document).ready(function(){
 		$.post("/booking",{data:book_str,showid:showid,total:total,snumber:snumber},function(res){
 
 			console.log(res);
+			if(res=="success"){
+
+				swal("Good job!", "Booking Successfully !", "success")
+				.then((value)=>{
+					location.reload();
+				});
+				// window.location.href = "{{ route('homepage')}}";
+				// setInterval('location.reload()', 200);
+			}
 
 			// remove LocalStorage
         	localStorage.removeItem('cinemabooking');

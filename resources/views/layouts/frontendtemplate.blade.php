@@ -26,6 +26,8 @@
         <link href="{{asset('frontend_assets/css/dot-icons.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('frontend_assets/css/theme.css')}}" rel="stylesheet" type="text/css">
 
+        {{-- <link rel=”stylesheet” href=" https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css"> --}}
+
         @yield('seatcss')
     </head>
     <body class="body">
@@ -392,6 +394,9 @@
         <script src="{{asset('frontend_assets/js/script.js')}}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ4Qy67ZAILavdLyYV2ZwlShd0VAqzRXA&callback=initMap"></script>
         <script async defer src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js"></script>
+
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> --}}
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         {{-- Seat JS --}}
         @yield('seatjs')
