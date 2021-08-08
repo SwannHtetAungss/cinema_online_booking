@@ -71,9 +71,9 @@
 		            <div class="col-sm-10">
 						<select name="status" class="form-control">
 		            		
-		            			<option value="0" @if($show->status== 0) {{'selected'}} @endif >Expired</option>
+		            			<option value="0" @if($show->status== 0) {{'selected'}} @endif >Time Over</option>
 		            			<option value="1" @if($show->status== 1) {{'selected'}} @endif >Now</option>
-		            			<option value="2" @if($show->status== 2) {{'selected'}} @endif >Soon</option>
+		            			<option value="2" @if($show->status== 2) {{'selected'}} @endif >Commming Soon</option>
 		            		
 		            </select>
 		              {{-- <input type="number" value="{{$show->status}}" name="status" class="form-control" id="inputStatus"> --}}

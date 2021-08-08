@@ -150,18 +150,13 @@
                             {{-- {{$hall_show->shows}} --}}
                             @foreach($hall_show->shows as $show_time)
                             {{-- @foreach($show_now as $show_time) --}}
-                            @if($show_time->status == 1)
-                                <div class="showtime-item">
-                                    <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat')}}"> {{$show_time->show_time}} </a>
-                                </div>
-                            @endif
+                                @if($show_time->status == 1)
+                                    <div class="showtime-item">
+                                        <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$show_time->hall_id,$show_time->id])}}"> {{$show_time->show_time}} </a>
+                                    </div>
+                                @endif
                             @endforeach
-                            {{-- <div class="showtime-item">
-                                <a class="btn btn-danger" aria-disabled="false" href="#">13 : 25</a>
-                            </div>
-                            <div class="showtime-item">
-                                <a class="btn-time btn" aria-disabled="false" href="#">16 : 07</a>
-                            </div> --}}
+                            
                         </div>
 
                             {{-- <p class="text-short entity-text">

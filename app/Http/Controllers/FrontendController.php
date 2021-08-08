@@ -57,7 +57,9 @@ class FrontendController extends Controller
 
     public function movie(){
         $movies = Movie::all();
-        return view('frontend.movie',compact('movies'));
+        $shows=Show::all()->groupBy('movie_id');
+        // dd($shows);
+        return view('frontend.movie',compact('movies','shows'));
     }
 
 

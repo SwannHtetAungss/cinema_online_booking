@@ -69,9 +69,9 @@
 		            <div class="col-sm-10">
 						<select name="status" class="form-control">
 		            		
-		            			<option value="0">Expired</option>
+		            			<option value="0">Time Over</option>
 		            			<option value="1">Now</option>
-		            			<option value="2">Soon</option>
+		            			<option value="2">Comming Soon</option>
 		            		
 		            	</select>
 		              @if ($errors->has('status'))

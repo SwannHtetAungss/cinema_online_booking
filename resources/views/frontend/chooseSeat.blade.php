@@ -140,7 +140,7 @@
 	                    	<table cellpadding="5">
 	                    		<tr>
 	                    			<td> <h4 class="entity-title mb-2">Hall</h4> </td>
-	                    			<td> <h4 class="entity-title mb-2">: {{$seat->hall->name}}</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$show->hall->name}}</h4> </td>
 	                    		</tr>
 	                    		<tr>
 	                    			<td> <h4 class="entity-title mb-2">Movie</h4> </td>

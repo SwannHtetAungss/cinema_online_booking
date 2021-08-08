@@ -62,11 +62,11 @@
                     </td>
                     <td>
                       @if($show->status == 0)
-                      <h4 class="text-danger">Expire</h4>
+                      <h4 class="text-danger">Time Over</h4>
                       @elseif($show->status == 1)
                       <h4 class="text-success">Now</h4>
                       @elseif($show->status == 2)
-                      <h4 style="color:yellow">Soon</h4>
+                      <h4 style="color:yellow">Comming Soon</h4>
                       @endif
                     </td>
                     <td class="text-center">
