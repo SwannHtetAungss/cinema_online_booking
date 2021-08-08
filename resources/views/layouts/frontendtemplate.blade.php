@@ -34,7 +34,7 @@
         <header class="header header-horizontal header-view-pannel">
             <div class="container">
                 <nav class="navbar">
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="{{route('homepage')}}">
                         <span class="logo-element">
                             <span class="logo-tape">
                                 <span class="svg-content svg-fill-theme" data-svg="{{asset('frontend_assets/images/svg/logo-part.svg')}}"></span>
@@ -72,7 +72,7 @@
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">Movies</a>
+                                        <a class="nav-link" href="#"data-role="nav-toggler">Movies</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
                                             <li class="nav-item">
@@ -140,7 +140,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="movies-blocks.html">Movies</a>
+                                <a class="nav-link" href="{{route('frontend.allmovie')}}">Movies</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('contact')}}">Contact us</a>

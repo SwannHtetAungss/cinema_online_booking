@@ -19,6 +19,7 @@ class CreateShowsTable extends Migration
             $table->time('show_time');
             $table->unsignedBigInteger('hall_id');
             $table->unsignedBigInteger('movie_id');
+            $table->integer('status');
             $table->timestamps();
             $table->softDeletes();
 

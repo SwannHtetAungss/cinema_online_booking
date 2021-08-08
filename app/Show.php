@@ -9,7 +9,7 @@ class Show extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['show_date', 'show_time', 'Hall_id', 'Movie_id'];
+    protected $fillable = ['show_date', 'show_time', 'Hall_id', 'Movie_id','status'];
 
     public function hall(){
         return $this->belongsTo('App\Hall');

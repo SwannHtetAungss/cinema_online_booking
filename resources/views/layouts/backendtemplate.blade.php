@@ -178,7 +178,7 @@
       
       @yield('content')
       
-      <footer class="footer">
+      {{-- <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
             <li class="nav-item">
@@ -205,7 +205,7 @@
             <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
           </div>
         </div>
-      </footer>
+      </footer> --}}
     </div>
   </div>
   <div class="fixed-plugin">
@@ -262,7 +262,9 @@
                       <span aria-hidden="true">×</span>
                   </button>
               </div>
-              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-body">
+                Click Logout button if you want to Leave.
+              </div>
               <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                   {{-- <a class="btn btn-primary" href="login.html">Logout</a> --}}

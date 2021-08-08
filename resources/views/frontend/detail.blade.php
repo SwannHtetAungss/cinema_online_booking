@@ -13,7 +13,7 @@
                     <div class="page-breadcrumbs">
                         <a class="content-link" href="{{route('homepage')}}">Home</a>
                         <span class="text-theme mx-2"><i class="fas fa-chevron-right"></i></span>
-                        <a class="content-link" href="movies-blocks.html">Movie Detail</a>
+                        <a class="content-link" href="#">Movie Detail</a>
                     </div>
                 </div>
             </div>
@@ -89,23 +89,66 @@
                         <div class="section-line">
                             <div class="entity-extra">
                                 @if(!$detail_show->isEmpty())
-                                    <div class="d-flex text-dark pb-3"><h3 class="pr-5 mr-5">Show Hall</h3><h3>Show Time</h3></div>
-                                    <div class="text-uppercase entity-extra-title float-left pr-5 mr-5">
-                                        
-                                        
+                                <table border="0" cellpadding="22" cellspacing="0">
+                                    <th>
+                                        <tr>
+                                            <td><h3 class="text-dark">Show Hall</h3></td>
+                                            <td></td>
+                                            <td><h3 class="text-dark">Show Time</h3></td>
+                                            <td></td><td></td>
+                                            <td><h3 class="text-dark">Show Date</h3></td>
+                                        </tr>
+                                    </th>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="text-uppercase entity-extra-title">
+                                                    <h3 class="text-danger">{{$detail_hall_show[0]->name}}</h3>
+                                                </div>
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="entity-showtime">
+                                                    <div class="showtime-wrap">
+                                                        
+                                                        @foreach($detail_show as $detail_shows)
+                                                        <div class="showtime-item">
+                                                            <a class="btn btn-outline-danger px-2" aria-disabled="true" @if($detail_shows->status != 1) style="pointer-events: none; color:gray;border-color:gray" @endif href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+                                                        </div>
+                                                        @endforeach
+                                                        
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="">
+                                                    <h4 class="text-danger">{{$detail_shows->show_date}}</h4>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                    {{-- <div class="d-flex text-dark pb-3"><h3 class="pr-5 mr-5">Show Hall</h3><h3>Show Time</h3><h3>Show Date</h3></div> --}}
+                                    {{-- <div class="text-uppercase entity-extra-title float-left pr-5 mr-5">
                                         <h3 class="text-danger">{{$detail_hall_show[0]->name}}</h3>
-                                    </div>
-                                    <div class="entity-showtime">
+                                    </div> --}}
+                                    {{-- <div class="entity-showtime float-left">
                                         <div class="showtime-wrap">
                                             
                                             @foreach($detail_show as $detail_shows)
                                             <div class="showtime-item">
+
+                                                <a class="btn btn-outline-danger px-2" aria-disabled="true" @if($detail_shows->status != 1) style="pointer-events: none; color:gray;border-color:gray" @endif href="{{route('frontend.chooseSeat')}}"> {{$detail_shows->show_time}} </a>
+
                                                 <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$detail_hall_show[0]->id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+
                                             </div>
                                             @endforeach
                                             
                                         </div>
-                                    </div>
+                                    </div> --}}
+                                    {{-- <div class="pr-5 mr-5">
+                                        <h3 class="text-danger">{{$detail_shows->show_date}}</h3>
+                                    </div> --}}
                                 @else
                                 <div><h3>Schedules are not available!</h3></div>
                                 @endif
@@ -150,22 +193,28 @@
                         <div class="section-head">
                             <h2 class="section-title text-uppercase">Show movies</h2>
                         </div>
-                        @foreach ($all_movies as $all_movie)
-                            
-                            <div class="movie-short-line-entity">
-                                <a class="entity-preview" href="{{route('frontend.detail',$all_movie->id)}}">
-                                    <span class="embed-responsive embed-responsive-16by9"  style="height:140px !important;">
-                                        <img class="embed-responsive-item" src="{{asset('storage/'.$all_movie->photo)}}" alt="" />
-                                    </span>
-                                </a>
-                                <div class="entity-content">
-                                    <h4 class="entity-title">
-                                        <a class="content-link" href="{{route('frontend.detail',$all_movie->id)}}">{{$all_movie->name}}</a>
-                                    </h4>
-                                    <p class="entity-subtext">{{$all_movie->release_date}}</p>
-                                </div>
-                            </div>
+                        @foreach ($show_now as $now_show)
 
+                            @foreach ($all_movies as $all_movie)
+
+                                @if($now_show->movie_id == $all_movie->id)
+                                
+                                    <div class="movie-short-line-entity">
+                                        <a class="entity-preview" href="{{route('frontend.detail',$all_movie->id)}}">
+                                            <span class="embed-responsive embed-responsive-16by9"  style="height:140px !important;">
+                                                <img class="embed-responsive-item" src="{{asset('storage/'.$all_movie->photo)}}" alt="" />
+                                            </span>
+                                        </a>
+                                        <div class="entity-content">
+                                            <h4 class="entity-title">
+                                                <a class="content-link" href="{{route('frontend.detail',$all_movie->id)}}">{{$all_movie->name}}</a>
+                                            </h4>
+                                            <p class="entity-subtext">{{$all_movie->release_date}}</p>
+                                        </div>
+                                    </div>
+                                @endif
+                                
+                            @endforeach
                         @endforeach
                         
                     </section>
