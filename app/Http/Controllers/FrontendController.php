@@ -10,6 +10,7 @@ use App\Hall;
 
 use App\Seat;
 use App\Booking;
+use App\ShowSeat;
 
 class FrontendController extends Controller
 {
@@ -83,9 +84,11 @@ class FrontendController extends Controller
         $seats = Seat::where('hall_id','=',$id)->get();
         $bookingSeats = Booking::where('show_id','=',$showid)->get();
 
-        // dd($bookingSeat);
+        $seatBookeds = ShowSeat::all();
+        // dd($seatBookeds);
+
         $show = Show::find($showid);
-        return view('frontend.chooseSeat',compact('seats','bookingSeats','show'));
+        return view('frontend.chooseSeat',compact('seats','bookingSeats','show','seatBookeds'));
 
     }
 }

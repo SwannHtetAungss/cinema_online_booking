@@ -46,7 +46,13 @@
 														    </a>
 													    @endforeach
 													@else
-														<h1>This is not Empty</h1>
+														@foreach($seats as $seat)
+													    	<a class="btn mr-2 mb-3 addtocart @foreach($seatBookeds as $seatBooked) @if($seatBooked->seat_id==$seat->id) {{'btn-danger disabled'}} @else {{'btn-primary'}} @endif @endforeach" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+														      	<h5 class="text-white">
+														      		{{$seat->seat_number}}
+														      	</h5>
+														    </a>
+													    @endforeach
 													@endif
 								    			</div>
 								    		</div>
@@ -140,7 +146,7 @@
 	                    	<table cellpadding="5">
 	                    		<tr>
 	                    			<td> <h4 class="entity-title mb-2">Hall</h4> </td>
-	                    			<td> <h4 class="entity-title mb-2">: {{$seat->hall->name}}</h4> </td>
+	                    			<td> <h4 class="entity-title mb-2">: {{$show->hall->name}}</h4> </td>
 	                    		</tr>
 	                    		<tr>
 	                    			<td> <h4 class="entity-title mb-2">Movie</h4> </td>
@@ -230,16 +236,27 @@
 	            </section>
 	            
 	            <section class="section-sidebar">
-	                <a class="btn btn-theme mb-2 d-block" href="gallery.html">Booking Now</a>
+	                <a class="btn btn-theme mb-2 d-block booking" data-total="" data-snumber="" data-showid="{{$show->id}}" href="#">Booking Now</a>
 
-	                <h4 class="avaliable my-1 d-inline-block"></h4> 
-	                <h3 class="d-inline">Avaliable</h3>
-	                <br>
-	                <h4 class="sold my-1 d-inline-block"></h4>
-	                <h4 class="d-inline">Sold</h4>
-	                <br>
-	                <h4 class="selected my-1 d-inline-block"></h4>
-	                <h4 class="d-inline">Selected</h4>
+	                <table>
+	                	<tr>
+	                		<td>
+	                			<h3 class="avaliable mt-2 d-inline-block"></h3> 
+	                		</td>
+	                		<td>
+	                			<h3 class="d-inline">Avaliable</h3>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td>
+	                			<h3 class="sold mt-2 d-inline-block"></h3>
+	                		</td>
+	                		<td>
+	                			<h3 class="d-inline">Sold</h3>
+	                		</td>
+	                	</tr>
+	                </table>	                
+	                
 	            </section>
 	        </div>
 	    </div>
@@ -253,6 +270,3 @@
 @section('addtocart')
 	<script type="text/javascript" src="{{asset('frontend_assets/js/booking.js')}}"></script>
 @endsection
-
-
-

@@ -13,4 +13,8 @@ class Seat extends Model
     public function hall(){
         return $this->belongsTo('App\Hall');
     }
+
+    public function showseats(){
+        return $this->hasMany('App\ShowSeat');
+    }
 }

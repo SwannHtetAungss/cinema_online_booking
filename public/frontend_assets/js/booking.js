@@ -48,6 +48,7 @@ $(document).ready(function(){
 			
 			})
 			$.each(splice_array,function(i,v){
+				
 				book_arr.splice(v,1);
 			})
 		}
@@ -82,13 +83,46 @@ $(document).ready(function(){
 				$('.count').html(': '+count);
 				$('.total').html(': '+total);
 				$('.snumber').html(': '+snumber);
+				$('.booking').attr('data-total',total);
+				$('.booking').attr('data-snumber',snumber);
 			}else{
 				$('.count').html(': '+0);
 				$('.total').html(': '+0);
 				$('.snumber').html(': ');
 			}
 
+		}else{
+			$('.count').html(': '+0);
+			$('.total').html(': '+0);
+			$('.snumber').html(': ');
 		}
 	}
+
+	$(document).on("click",".booking",function(){
+		// alert('hi');
+		$.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	        }
+	    });
+
+		var book_str = localStorage.getItem('cinemabooking');
+		var showid = $(this).data('showid');
+		var total = $(this).data('total');
+		var snumber = $(this).data('snumber');
+
+		$.post("/booking",{data:book_str,showid:showid,total:total,snumber:snumber},function(res){
+
+			console.log(res);
+
+			// remove LocalStorage
+        	localStorage.removeItem('cinemabooking');
+
+        	getData();
+
+		});
+
+
+	});
 
 })

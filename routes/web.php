@@ -20,20 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 // For backend
 Route::middleware('auth','role:admin')->group(function(){
-
-Route::resource('hall','HallController');
-
-Route::resource('shows','ShowController');
-
-
-Route::resource('seat','SeatController');
-
-Route::resource('movie','MovieController');
-
-
-
+	Route::resource('hall','HallController');
+	Route::resource('shows','ShowController');
+	Route::resource('seat','SeatController');
+	Route::resource('movie','MovieController');
 });
 
+Route::middleware('auth','role:customer|admin')->group(function () {
+	Route::resource('booking','BookingController');
+});
 
 Auth::routes();
 
