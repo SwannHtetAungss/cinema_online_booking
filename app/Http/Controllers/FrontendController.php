@@ -7,7 +7,9 @@ use App\Movie;
 use Illuminate\Http\Request;
 use App\Show;
 use App\Hall;
-use DB;
+
+use App\Seat;
+use App\Booking;
 
 class FrontendController extends Controller
 {
@@ -79,8 +81,16 @@ class FrontendController extends Controller
 
     }
 
-    public function chooseSeat(){
-        return view('frontend.chooseSeat');
+    public function chooseSeat($id,$showid)
+    {
+        
+        // $showmovie = Show::find($id);
+        $seats = Seat::where('hall_id','=',$id)->get();
+        $bookingSeats = Booking::where('show_id','=',$showid)->get();
+
+        // dd($bookingSeat);
+        $show = Show::find($showid);
+        return view('frontend.chooseSeat',compact('seats','bookingSeats','show'));
 
     }
 }

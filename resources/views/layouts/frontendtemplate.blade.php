@@ -393,5 +393,6 @@
 
         {{-- Seat JS --}}
         @yield('seatjs')
+        @yield('addtocart')
     </body>
 </html>
