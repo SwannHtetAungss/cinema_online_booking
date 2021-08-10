@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Movie extends Model
 {
     use SoftDeletes;
-    protected $fillable=['name','photo','actor','actress','director','description','duration','release_date','genre'];
+    protected $fillable=['name','photo','actor','actress','director','description','trailer','duration','release_date','genre'];
 
     public function shows(){
         return $this->hasMany('App\Show');

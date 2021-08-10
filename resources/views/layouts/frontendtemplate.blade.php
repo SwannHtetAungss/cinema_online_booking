@@ -67,78 +67,7 @@
                                     </li>
                                 </ul> --}}
                             </li>
-                            <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#" data-role="nav-toggler">Pages</a>
-                                <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                <ul class="collapse nav">
-                                    <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#"data-role="nav-toggler">Movies</a>
-                                        <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                        <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks.html">Blocks - No Sidebar</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks-sidebar-right.html">Blocks - Sidebar right</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters.html">Posters - No Sidebar</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters-sidebar-right.html">Posters - Sidebar right</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-list.html">List - No Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="movie-info-sidebar-right.html">Movie info</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="gallery.html">Gallery</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="news-blocks-sidebar-right.html">News</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="article-sidebar-right.html">Article</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="about-us.html">About us</a>
-                                    </li>
-                                    <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">User pages</a>
-                                        <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                        <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="sign-in.html">Sign in</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="sign-up.html">Sign up</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">Status pages</a>
-                                        <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                        <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="under-construction.html">Under construction</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="coming-soon.html">Coming soon</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="404-1.html">404 - 1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="404-2.html">404 - 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('frontend.allmovie')}}">Movies</a>
                             </li>
@@ -194,6 +123,9 @@
                                     <a class="nav-link" href="#">{{ Auth::user()->name }}<i class="fa fa-caret-down pl-1" aria-hidden="true"></i></a>
                                     <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                     <ul class="collapse nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('history') }}">History</a>
+                                        </li>
                                         <li class="nav-item">
                                             {{-- <a class="nav-link" href="homepage-1.html">Homepage 1</a> --}}
                                             <a class="nav-link" href="{{ route('logout') }}"
@@ -256,7 +188,7 @@
                             </ul>
                         </div> --}}
                         <div class="navbar-extra">
-                            <a class="btn-theme btn" href="#"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;Buy Ticket</a>
+                            <a class="btn-theme btn" href="{{route('homepage')}}/#buyTicket"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;Buy Ticket</a>
                         </div>
                     </div>
                 </nav>

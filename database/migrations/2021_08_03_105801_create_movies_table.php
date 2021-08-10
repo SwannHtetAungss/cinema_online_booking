@@ -21,6 +21,7 @@ class CreateMoviesTable extends Migration
             $table->string('actress');
             $table->string('director');
             $table->text('description');
+            $table->string('trailer');
             $table->string('duration');
             $table->date('release_date');
             $table->string('genre');

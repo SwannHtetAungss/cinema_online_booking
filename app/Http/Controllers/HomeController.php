@@ -31,6 +31,10 @@ class HomeController extends Controller
             return redirect()->route('hall.index');
         }else{
             return redirect()->route('homepage');
+            // $url = url()->previous();
+            // return redirect()->back()->getTargetUrl();
+            // return redirect()->back();
+            // return redirect()->getUrlGenerator()->previous();
         }
     }
 }

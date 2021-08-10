@@ -24,64 +24,73 @@
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Photo</label>
+						<label for="inputPhoto" class="col-sm-2 col-form-label">Photo</label>
 						<div class="col-sm-10">
-						<input type="file" name="photo" class="form-control" id="inputName">
+						<input type="file" name="photo" class="form-control" id="inputPhoto">
 						@if ($errors->has('photo'))
 							<span class="text-danger">{{ $errors->first('photo') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Actor</label>
+						<label for="inputActor" class="col-sm-2 col-form-label">Actor</label>
 						<div class="col-sm-10">
-						<input type="text" name="actor" class="form-control" id="inputName">
+						<input type="text" name="actor" class="form-control" id="inputActor">
 						@if ($errors->has('actor'))
 							<span class="text-danger">{{ $errors->first('actor') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Actress</label>
+						<label for="inputActress" class="col-sm-2 col-form-label">Actress</label>
 						<div class="col-sm-10">
-						<input type="text" name="actress" class="form-control" id="inputName">
+						<input type="text" name="actress" class="form-control" id="inputActress">
 						@if ($errors->has('actress'))
 							<span class="text-danger">{{ $errors->first('actress') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Director</label>
+						<label for="inputDirector" class="col-sm-2 col-form-label">Director</label>
 						<div class="col-sm-10">
-						<input type="text" name="director" class="form-control" id="inputName">
+						<input type="text" name="director" class="form-control" id="inputDirector">
 						@if ($errors->has('director'))
 							<span class="text-danger">{{ $errors->first('director') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Description</label>
+						<label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
 						<div class="col-sm-10">
 						{{-- <input type="text" name="description" class="form-control" id="inputName"> --}}
-						<textarea name="description" class="form-control" id="inputName" cols="20" rows="5"></textarea>
+						<textarea name="description" class="form-control" id="inputDescription" cols="20" rows="5"></textarea>
 						@if ($errors->has('description'))
 							<span class="text-danger">{{ $errors->first('description') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Duration</label>
+						<label for="inputTrailer" class="col-sm-2 col-form-label">Trailer</label>
 						<div class="col-sm-10">
-						<input type="text" name="duration" class="form-control" id="inputName">
+						<input type="text" name="trailer" class="form-control" id="inputTrailer">
+						@if ($errors->has('trailer'))
+							<span class="text-danger">{{ $errors->first('trailer') }}</span>
+						@endif
+						</div>
+		        	</div>
+					<div class="row mb-3">
+						<label for="inputDuration" class="col-sm-2 col-form-label">Duration</label>
+						<div class="col-sm-10">
+						<input type="text" name="duration" class="form-control" id="inputDuration">
 						@if ($errors->has('duration'))
 							<span class="text-danger">{{ $errors->first('duration') }}</span>
 						@endif
 						</div>
 		        	</div>
 					<div class="row mb-3">
-						<label for="inputName" class="col-sm-2 col-form-label">Release Date</label>
+						<label for="inputReleaseDate" class="col-sm-2 col-form-label">Release Date</label>
 						<div class="col-sm-10">
-						<input type="date" name="release_date" class="form-control" id="inputName">
+						<input type="date" name="release_date" class="form-control" id="inputReleaseDate">
 						@if ($errors->has('release_date'))
 							<span class="text-danger">{{ $errors->first('release_date') }}</span>
 						@endif
@@ -89,9 +98,9 @@
 		        	</div>
 
 			        <div class="row mb-3">
-			            <label for="inputTotalSeat" class="col-sm-2 col-form-label">Genre</label>
+			            <label for="inputGenre" class="col-sm-2 col-form-label">Genre</label>
 			            <div class="col-sm-10">
-			              <input type="text" name="genre" class="form-control" id="inputTotalSeat">
+			              <input type="text" name="genre" class="form-control" id="inputGenre">
 			              @if ($errors->has('genre'))
 			                <span class="text-danger">{{ $errors->first('genre') }}</span>
 			              @endif

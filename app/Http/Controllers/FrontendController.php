@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 
-use App\Movie;
-use Illuminate\Http\Request;
-use App\Show;
 use App\Hall;
-
 use App\Seat;
+use App\Show;
+use App\Movie;
+
 use App\Booking;
 use App\ShowSeat;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -59,8 +60,10 @@ class FrontendController extends Controller
     public function movie(){
         $movies = Movie::all();
         $shows=Show::all()->groupBy('movie_id');
+        $show_now = Show::where('status','=','1')->groupBy('movie_id')->get();
+        $show_soon = Show::where('status','=','2')->groupBy('movie_id')->get();
         // dd($shows);
-        return view('frontend.movie',compact('movies','shows'));
+        return view('frontend.movie',compact('movies','shows','show_now','show_soon'));
     }
 
 
@@ -89,6 +92,15 @@ class FrontendController extends Controller
 
     public function contact(){
         return view('frontend.contact');
+
+    }
+
+    public function history(){
+        $user_id = Auth::user()->id;
+        $bookings = Booking::where('user_id','=',$user_id)->get();
+        $shows = Show::all();
+        $showseats =ShowSeat::all();
+        return view('frontend.history',compact('bookings','shows','showseats'));
 
     }
 

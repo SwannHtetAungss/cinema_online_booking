@@ -26,6 +26,9 @@
                       Name
                     </th>
                     <th>
+                      Cast
+                    </th>
+                    <th>
                         Duration
                     </th>
                     <th>
@@ -56,12 +59,14 @@
                                 
                             </td>
                             <td>
-                                <div class="d-inline">
-                                    <p>{{$movie->name}}</p>
-                                    <span>{{$movie->director}}</span><br>
-                                    <span>{{$movie->actor}}  {{$movie->actress}}</span><br>
-                                </div>
+                              {{$movie->name}}   
                             </td>
+                            <td>
+                              <div class="d-inline">
+                                  <span>{{$movie->director}}</span><br>
+                                  <span>{{$movie->actor}} , {{$movie->actress}}</span><br>
+                              </div>
+                          </td>
                             <td>
                                 {{$movie->duration}}
                             </td>
