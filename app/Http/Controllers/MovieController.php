@@ -44,6 +44,7 @@ class MovieController extends Controller
             "actress" => "required",
             "director" => "required",
             "description" => "required",
+            "trailer" => "required",
             "duration" => "required",
             "release_date" => "required",
             "genre" => "required",
@@ -68,6 +69,7 @@ class MovieController extends Controller
         $movie->actress = $request->actress;
         $movie->director = $request->director;
         $movie->description = $request->description;
+        $movie->trailer = $request->trailer;
         $movie->duration = $request->duration;
         $movie->release_date = $request->release_date;
         $movie->genre = $request->genre;
@@ -115,6 +117,7 @@ class MovieController extends Controller
             "actress" => "required",
             "director" => "required",
             "description" => "required",
+            "trailer" => "required",
             "duration" => "required",
             "release_date" => "required",
             "genre" => "required",
@@ -141,6 +144,7 @@ class MovieController extends Controller
         $movie->actress = $request->actress;
         $movie->director = $request->director;
         $movie->description = $request->description;
+        $movie->trailer = $request->trailer;
         $movie->duration = $request->duration;
         $movie->release_date = $request->release_date;
         $movie->genre = $request->genre;

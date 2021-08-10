@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // return view('home');
+
         // $roles = Auth::user()->getRoleNames();
         // // dd($roles);
         // if($roles[0] == 'admin'){
@@ -32,5 +33,6 @@ class HomeController extends Controller
         // }else{
         //     return redirect()->route('homepage');
         // }
+
     }
 }

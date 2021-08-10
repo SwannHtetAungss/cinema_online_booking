@@ -30,6 +30,9 @@ Route::middleware('auth','role:customer|admin')->group(function () {
 	Route::resource('booking','BookingController');
 });
 
+
+//For Authentication
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -40,6 +43,8 @@ Auth::routes();
 Route::get('detail/{id}', 'FrontendController@detail')->name('frontend.detail');
 
 Route::get('contact', 'FrontendController@contact')->name('contact');
+
+Route::get('history', 'FrontendController@history')->name('history');
 
 
 Route::get('/', 'FrontendController@home')->name('homepage');

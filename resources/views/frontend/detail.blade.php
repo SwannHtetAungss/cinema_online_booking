@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="d-over bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-play">
-                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$movie_details->trailer}}" data-magnific-popup="iframe">
                                                 <span class="icon-content"><i class="fas fa-play"></i></span>
                                             </a>
                                         </div>
@@ -111,9 +111,17 @@
                                                     <div class="showtime-wrap">
                                                         
                                                         @foreach($detail_show as $detail_shows)
+                                                        @if($detail_shows->status == 1)
+                                                            
                                                         <div class="showtime-item">
-                                                            <a class="btn btn-outline-danger px-2" aria-disabled="true" @if($detail_shows->status != 1) style="pointer-events: none; color:gray;border-color:gray" @endif href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+                                                            <a class="btn btn-outline-danger px-2" aria-disabled="true"  href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
                                                         </div>
+                                                        @else
+                                                            <div class="showtime-item">
+                                                                <h4 class="text-muted">Comming Soon</h4>
+                                                            </div>
+                                                        @endif
+                                                        {{-- @if($detail_shows->status != 1) style="pointer-events: none; color:gray;border-color:gray" @endif --}}
                                                         @endforeach
                                                         
                                                     </div>

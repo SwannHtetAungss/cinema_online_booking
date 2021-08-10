@@ -28,7 +28,7 @@
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
                                             <div class="collapse animated faster entity-play" data-show-class="fadeIn show" data-hide-class="fadeOut show">
-                                                <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                                <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$movie->trailer}}" data-magnific-popup="iframe">
                                                     <span class="icon-content"><i class="fas fa-play"></i></span>
                                                 </a>
                                             </div>
@@ -83,7 +83,7 @@
 </section>
 <section class="section-long">
     <div class="container">
-        <div class="section-head">
+        <div class="section-head"  id="buyTicket">
             <h2 class="section-title text-uppercase">Now in play</h2>
             {{-- <p class="section-text">Dates: 13 - 15 february 2019</p> --}}
         </div>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="d-over bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                         <div class="entity-play">
-                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$showmovie->trailer}}" data-magnific-popup="iframe">
                                 <span class="icon-content"><i class="fas fa-play"></i></span>
                             </a>
                         </div>
@@ -205,41 +205,51 @@
                         @if($soon_show->movie_id == $movie->id)
                             <div class="slick-slide">
                                 <article class="movie-line-entity">
-                                    <div class="entity-preview">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <img class="embed-responsive-item" src="{{asset('storage/'.$movie->photo)}}" alt="" />
-                                        </div>
-                                        {{-- <div class="d-over">
-                                            <div class="entity-play">
-                                                <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
-                                                    <span class="icon-content"><i class="fas fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div> --}}
-                                    </div>
-                                    <div class="entity-content">
-                                        <h4 class="entity-title">
-                                            <a class="content-link" href="{{route('frontend.detail',$movie->id)}}">{{$movie->name}}</a>
-                                        </h4>
-                                        <div class="entity-category">
-                                            <a class="content-link" href="movies-blocks.html">{{$movie->genre}}</a>
-                                        </div>
-                                        <div class="entity-info">
-                                            <div class="info-lines">
-                                                <div class="info info-short">
-                                                    <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
-                                                    <span class="info-text">{{$soon_show->show_date}}</span>
-                                                </div>
-                                                <div class="info info-short">
-                                                    <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
-                                                    <span class="info-text">{{$movie->duration}}</span>
-                                                    {{-- <span class="info-rest">&nbsp;min</span> --}}
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="entity-preview"> 
+                                                    {{-- style="margin-right:-150px !important" --}}
+                                                    <div class="embed-responsive embed-responsive-16by9" style="width:370px;height:470px">
+                                                        {{-- style="width:370px;height:470px" --}}
+                                                        <img class="embed-responsive-item" src="{{asset('storage/'.$movie->photo)}}" alt="" />
+                                                    </div>
+                                                    {{-- <div class="d-over">
+                                                        <div class="entity-play">
+                                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">
+                                                                <span class="icon-content"><i class="fas fa-play"></i></span>
+                                                            </a>
+                                                        </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
+                                            <div class="col-lg-8 pt-5 mt-5 p-4">
+                                                <div class="entity-content">
+                                                    <h4 class="entity-title pb-2" style="font-size:45px">
+                                                        <a class="content-link" href="{{route('frontend.detail',$movie->id)}}">{{$movie->name}}</a>
+                                                    </h4>
+                                                    <div class="entity-category pb-2" style="font-size:18px">
+                                                        <a class="content-link" href="movies-blocks.html">{{$movie->genre}}</a>
+                                                    </div>
+                                                    <div class="entity-info pb-2">
+                                                        <div class="info-lines">
+                                                            <div class="info info-short">
+                                                                <span class="text-theme info-icon"><i class="fas fa-calendar-alt"></i></span>
+                                                                <span class="info-text">{{$soon_show->show_date}}</span>
+                                                            </div>
+                                                            <div class="info info-short">
+                                                                <span class="text-theme info-icon"><i class="fas fa-clock"></i></span>
+                                                                <span class="info-text">{{$movie->duration}}</span>
+                                                                {{-- <span class="info-rest">&nbsp;min</span> --}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-short entity-text" style="font-size:15px">
+                                                        {{$movie->description}}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p class="text-short entity-text">
-                                            {{$movie->description}}
-                                        </p>
                                     </div>
                                 </article>
                             </div>

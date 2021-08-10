@@ -15,7 +15,7 @@
             <form method="post" action="{{route('movie.update',$movie->id)}}" enctype="multipart/form-data">
             	@csrf
           		@method('PUT')
-                  <div class="row mb-3">
+                <div class="row mb-3">
                     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                     <input type="text" name="name" class="form-control" id="inputName" value="{{$movie->name}}">
@@ -68,6 +68,15 @@
                     <textarea name="description" class="form-control" id="inputName" cols="20" rows="5">{{$movie->description}}</textarea>
                     @if ($errors->has('description'))
                         <span class="text-danger">{{ $errors->first('description') }}</span>
+                    @endif
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputName" class="col-sm-2 col-form-label">Trailer</label>
+                    <div class="col-sm-10">
+                    <input type="text" name="trailer" class="form-control" id="inputName" value="{{$movie->trailer}}">
+                    @if ($errors->has('trailer'))
+                        <span class="text-danger">{{ $errors->first('trailer') }}</span>
                     @endif
                     </div>
                 </div>
