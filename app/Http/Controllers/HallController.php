@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Hall;
 use Illuminate\Http\Request;
 
+use App\Seat;
+
 class HallController extends Controller
 {
     /**
@@ -51,6 +53,30 @@ class HallController extends Controller
         $hall->name = $request->name;
         $hall->total_seat = $request->total_seat;
         $hall->save();
+
+        // data insert to Seat
+        $hallid = $hall->id;
+        $hallname = $hall->name;
+        $seat_total = $hall->total_seat;
+        $seatprice = 3000;
+        $room = substr($hallname,5,1);
+        
+        for ($i=1; $i <= $seat_total ; $i++) { 
+
+            $numlength = strlen((string)$i);
+            if($numlength==1){
+                $seatNumber = $room.'-0'.$i;
+            }else{
+                $seatNumber = $room.'-'.$i;
+            }
+
+            $seat = new Seat; // create new object
+            $seat->seat_number = $seatNumber;
+            $seat->seat_price = $seatprice;
+            $seat->hall_id = $hallid;
+            $seat->save();
+
+        }
 
         // redirect
         return redirect()->route('hall.index');

@@ -116,7 +116,7 @@
 
                 <div class="entity-content">
                     <h4 class="entity-title">
-                        <a class="content-link text-uppercase" href="{{route('frontend.detail',$movie->id)}}"> {{$showmovie->name}} </a>
+                        <a class="content-link text-uppercase" href="{{route('frontend.detail',$showmovie->id)}}"> {{$showmovie->name}} </a>
                     </h4>
                     <div class="entity-category">
                         <a class="content-link" href="movies-blocks.html"> {{$showmovie->genre}} </a>
@@ -279,7 +279,7 @@
                 <article class="article-tape-entity">
                     <a class="entity-preview" href="article-sidebar-right.html" data-role="hover-wrap">
                         <span class="embed-responsive embed-responsive-16by9">
-                            <img class="embed-responsive-item" src="http://via.placeholder.com/720x405" alt="" />
+                            <img class="embed-responsive-item" src="{{asset('frontend_assets/images/ads.jpg')}}" alt="" />
                         </span>
                         <span class="entity-date">
                             <span class="tape-block tape-horizontal tape-single bg-theme text-white">
@@ -313,7 +313,7 @@
                 <article class="article-tape-entity">
                     <a class="entity-preview" href="article-sidebar-right.html" data-role="hover-wrap">
                         <span class="embed-responsive embed-responsive-16by9">
-                            <img class="embed-responsive-item" src="http://via.placeholder.com/720x405" alt="" />
+                            <img class="embed-responsive-item" src="{{asset('frontend_assets/images/ads_2.jpg')}}" alt="" />
                         </span>
                         <span class="entity-date">
                             <span class="tape-block tape-horizontal tape-single bg-theme text-white">

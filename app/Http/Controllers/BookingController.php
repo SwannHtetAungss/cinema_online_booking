@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Seat;
 use App\ShowSeat;
+use App\User;
 
 class BookingController extends Controller
 {
@@ -18,7 +19,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::all();
+        return view('backend.booking.index',compact('bookings'));
     }
 
     /**
@@ -39,45 +41,52 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        DB::transaction(function () use ($request) {
-            $book_arr = json_decode($request->data);
-            
-            $total=0;
-            $seatcount=0;
-            foreach($book_arr as $booking){
-                $total += $booking->seatprice;
-                $seatcount ++;
-            }
+        
 
-            // dd($seatnumber);
+        if(is_null($request->total)){
+            return 'fail';
+        }else{
+            DB::transaction(function () use ($request) {
+                $book_arr = json_decode($request->data);
+                
+                $total=0;
+                $seatcount=0;
+                foreach($book_arr as $booking){
+                    $total += $booking->seatprice;
+                    $seatcount ++;
+                }
 
-            // Insert Booking Table
-            $booking = new Booking;
-            $booking->booking_time = date('Y-m-d'); // timestamp
-            $booking->numberofseats = $seatcount;
-            $booking->total = $total;
-            $booking->status = 0;
-            $booking->user_id = Auth::id();
-            $booking->show_id = $request->showid;
-            $booking->save();
+                // dd($seatnumber);
 
-            $booking_id = $booking->id;
+                // Insert Booking Table
+                $booking = new Booking;
+                $booking->booking_time = date('Y-m-d'); // timestamp
+                $booking->numberofseats = $seatcount;
+                $booking->total = $total;
+                $booking->status = 0;
+                $booking->user_id = Auth::id();
+                $booking->show_id = $request->showid;
+                $booking->save();
 
-            // Insert Show Seat Table
-            foreach($book_arr as $seat){
+                $booking_id = $booking->id;
 
-                $showseat = new ShowSeat();
-                $showseat->status = 0;
-                $showseat->price = $seat->seatprice;
-                $showseat->booking_id = $booking_id;
-                $showseat->show_id = $request->showid;
-                $showseat->seat_id = $seat->id;
-                $showseat->save();
-            }
-            
-        });
+                // Insert Show Seat Table
+                foreach($book_arr as $seat){
 
-        return 'success';
+                    $showseat = new ShowSeat();
+                    $showseat->status = 0;
+                    $showseat->price = $seat->seatprice;
+                    $showseat->booking_id = $booking_id;
+                    $showseat->show_id = $request->showid;
+                    $showseat->seat_id = $seat->id;
+                    $showseat->save();
+                }
+                
+            });
+
+            return 'success';
+
+        }
     }
 
     /**
@@ -88,7 +97,10 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        $booking = Booking::find($booking->id);
+        $booking_orders = $booking->showseats;
+        // dd($booking_orders);
+        return view('backend.booking.detail',compact('booking','booking_orders'));
     }
 
     /**
@@ -111,7 +123,19 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        // $bookings = Booking::all();
+        // dd($request);
+        $booking->status = $request->status;
+        $booking->save();
+
+        $bookseats = ShowSeat::where('booking_id','=', $booking->id)->get();
+
+        foreach($bookseats as $bookseat){
+            $bookseat->status = $request->status;
+            $bookseat->save();
+        }
+        
+        return redirect()->route('booking.index');
     }
 
     /**

@@ -1,3 +1,6 @@
+var white = false
+var bgcolor;
+
 $(document).ready(function(){
 
 	getData();
@@ -30,22 +33,27 @@ $(document).ready(function(){
 		}else{
 			book_arr = JSON.parse(book_str);
 		}
+		
+		// Change Button Color
+		if (white = !white) {
+            bgcolor = $(this).css('backgroundColor');
+            $(this).css("background-color", "#6c757d");
+        } else {
+            $(this).css("background-color", bgcolor);
+        }
 
 		var status = false;
-
 		// true condition
 		var splice_array = Array();
 		if(book_arr.length > 0){
 			$.each(book_arr,function(i,v){
 				// alert(id);
-				// console.log(id,v.id,i);
-				// console.log(v);
 				if(v.id==id){
 					// console.log(i);
+					// $( ".addtocart ".v.seatnumber).css("background-color", "red");
 					splice_array.push(i);
 					status = true;
 				}
-			
 			})
 			$.each(splice_array,function(i,v){
 				
@@ -110,18 +118,27 @@ $(document).ready(function(){
 		var showid = $(this).data('showid');
 		var total = $(this).data('total');
 		var snumber = $(this).data('snumber');
+		var showtime = $(this).data('showtime');
+		// var comingtime = showtime.split(":", [0]);
 
 		$.post("/booking",{data:book_str,showid:showid,total:total,snumber:snumber},function(res){
 
 			console.log(res);
 			if(res=="success"){
 
-				swal("Good job!", "Booking Successfully !", "success")
+				swal("Booking Successfully !", "ရုပ်ရှင် မစခင် တစ်နာရီအလို အရောက်လာပေးပါရန်", "success")
 				.then((value)=>{
 					location.reload();
 				});
 				// window.location.href = "{{ route('homepage')}}";
 				// setInterval('location.reload()', 200);
+			}
+
+			if(res=="fail"){
+				swal("Please choose Seat First !","ခုံနံပါတ်အား ရွေးချယ်ပြီးမှ Booking တင်ပေးပါ","warning")
+				.then((value)=>{
+					location.reload();
+				});
 			}
 
 			// remove LocalStorage

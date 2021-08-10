@@ -11,4 +11,12 @@ class Booking extends Model
     public function showseats(){
         return $this->hasMany('App\ShowSeat');
     }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function show(){
+        return $this->belongsTo('App\Show');
+    }
 }

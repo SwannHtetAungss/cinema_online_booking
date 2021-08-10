@@ -19,6 +19,8 @@ class Show extends Model
         return $this->belongsTo('App\Movie');
     }
    
-
+    public function bookings(){
+        return $this->hasMany('App\Booking');
+    }
 
 }

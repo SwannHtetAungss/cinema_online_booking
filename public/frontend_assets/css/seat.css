@@ -34,6 +34,13 @@ body {
   background: #e87c87;
 }
 
+.booked{
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+  background: #ffd75f;
+}
+
 .selected{
   width: 20px;
   height: 20px;

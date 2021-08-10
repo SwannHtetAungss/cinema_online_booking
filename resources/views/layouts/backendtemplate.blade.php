@@ -69,6 +69,12 @@
               <p>Shows</p>
             </a>
           </li>
+          <li class="{{Request::is('booking') ? 'active': ''}}">
+            <a href="{{route('booking.index')}}">
+              <i class="tim-icons icon-align-center"></i>
+              <p>Bookings</p>
+            </a>
+          </li>
           <li>
             <a href="./user.html">
               <i class="tim-icons icon-single-02"></i>

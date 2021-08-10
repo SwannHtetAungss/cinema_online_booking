@@ -39,7 +39,7 @@
 								    			<div class="col ml-4">
 								    				@if($bookingSeats->isEmpty())
 												    	@foreach($seats as $seat)
-													    	<a class="btn btn-primary mr-2 mb-3 addtocart" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+													    	<a class="btn btn-primary mr-2 mb-3 addtocart <?=$seat->seat_number?>" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
 														      	<h5 class="text-white">
 														      		{{$seat->seat_number}}
 														      	</h5>
@@ -47,7 +47,7 @@
 													    @endforeach
 													@else
 														@foreach($seats as $seat)
-													    	<a class="btn mr-2 mb-3 addtocart @foreach($seatBookeds as $seatBooked) @if($seatBooked->seat_id==$seat->id && $seatBooked->show_id==$show->id) {{'btn-danger disabled'}} @else {{'btn-primary'}} @endif @endforeach" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
+													    	<a class="btn mr-2 mb-3 addtocart <?=$seat->seat_number?> @foreach($seatBookeds as $seatBooked) @if($seatBooked->seat_id==$seat->id && $seatBooked->show_id==$show->id && $seatBooked->status==1) {{'btn-danger disabled'}} @elseif($seatBooked->seat_id==$seat->id && $seatBooked->show_id==$show->id && $seatBooked->status==0) {{'btn-warning disabled'}} @else {{'btn-primary'}} @endif @endforeach" data-id="<?=$seat->id?>" data-seatnumber="<?=$seat->seat_number?>" data-seatprice="<?=$seat->seat_price?>" data-hallname="<?=$seat->hall->name?>" data-moviename="<?=$show->movie->name?>" data-showdate="<?=$show->show_date?>" data-showtime="<?=$show->show_time?>">
 														      	<h5 class="text-white">
 														      		{{$seat->seat_number}}
 														      	</h5>
@@ -254,10 +254,18 @@
 	                	</tr>
 	                	<tr>
 	                		<td>
+	                			<h3 class="booked mt-2 d-inline-block"></h3>
+	                		</td>
+	                		<td>
+	                			<h3 class="d-inline">Booked</h3>
+	                		</td>
+	                	</tr>
+	                	<tr>
+	                		<td>
 	                			<h3 class="sold mt-2 d-inline-block"></h3>
 	                		</td>
 	                		<td>
-	                			<h3 class="d-inline">Sold</h3>
+	                			<h3 class="d-inline">SoldOut</h3>
 	                		</td>
 	                	</tr>
 	                </table>	                
