@@ -22,28 +22,46 @@
 </section>
 <section class="section-long">
     {{-- <div class="container"> --}}
-        
+        {{-- for_tab_center --}}
 
     <div class="container">
         <div>
             <h2 align="center">Movies</h2>
             <hr class="movie_hr">
         </div>
-        
-        <ul class="nav nav-pills pills-dark mb-3 text-center pb-5 pt-3 for_tab_center" id="pills-tab" role="tablist">
+
+        @if($shows->isNotEmpty())
+        <ul class="nav nav-pills pills-dark mb-3 pb-3 pt-3" style="justify-content: center;" id="pills-tab" role="tablist">
+
+            @if($show_now->isNotEmpty())
             <li class="nav-item">
                 <a class="nav-link active p-3" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><h5>Now Showing</h5></a>
             </li>
+            @endif
+
+            @if($show_soon->isNotEmpty())
             <li class="nav-item">
                 <a class="nav-link p-3" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><h5>Comming Soon</h5></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link p-3" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><h5>Other</h5></a>
-            </li>
+            @endif
+
+            @foreach ($movies as $movie)
+            @php
+                $forshow =$movie->shows;
+            @endphp
+            @foreach ($forshow as $forshows)
+            @endforeach
+            @endforeach
+            @if($forshows->movie_id != $movie->id)
+                <li class="nav-item">
+                    <a class="nav-link p-3" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><h5>Other</h5></a>
+                </li>
+            @endif
+            
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="grid row">
+            <div class="grid row" style="justify-content: center;">
                 
                 @foreach ($show_now as $shownow)
                     
@@ -51,7 +69,7 @@
                             <div class="gallery-entity">
                                 <div class="entity-preview" data-role="hover-wrap">
                                     <div class="embed-responsive embed-responsive-poster">
-                                    <a href="{{route('frontend.detail',$shownow->id)}}"><img class="embed-responsive-item" src="{{asset('storage/'.$shownow->movie->photo)}}" alt="" /></a>
+                                    <a href="{{route('frontend.detail',$shownow->movie->id)}}"><img class="embed-responsive-item" src="{{asset('storage/'.$shownow->movie->photo)}}" alt="" /></a>
                                     </div>
                                     <div class="bg-theme-lighted d-over collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-view-popup">
@@ -72,14 +90,14 @@
             </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="grid row">
+            <div class="grid row" style="justify-content: center;">
                 @foreach ($show_soon as $showsoon)
                     
                         <div class="col-sm-6 col-lg-4">
                             <div class="gallery-entity">
                                 <div class="entity-preview" data-role="hover-wrap">
                                     <div class="embed-responsive embed-responsive-poster">
-                                    <a href="{{route('frontend.detail',$showsoon->id)}}"><img class="embed-responsive-item" src="{{asset('storage/'.$showsoon->movie->photo)}}" alt="" /></a>
+                                    <a href="{{route('frontend.detail',$showsoon->movie->id)}}"><img class="embed-responsive-item" src="{{asset('storage/'.$showsoon->movie->photo)}}" alt="" /></a>
                                     </div>
                                     <div class="bg-theme-lighted d-over collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-view-popup">
@@ -99,7 +117,7 @@
             </div>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <div class="grid row">
+            <div class="grid row" style="justify-content: center;">
                 @foreach ($movies as $movie)
                 @php
                     $forshow =$movie->shows;
@@ -132,7 +150,7 @@
                     {{-- @break --}}
                     
                 @endforeach
-                @if($forshows->movie_id != $movie->id)
+                    @if($forshows->movie_id != $movie->id)
                         <div class="col-sm-6 col-lg-4">
                             <div class="gallery-entity">
                                 <div class="entity-preview" data-role="hover-wrap">
@@ -157,6 +175,7 @@
             </div>
             </div>
         </div>
+        @endif
         
     </div>
 

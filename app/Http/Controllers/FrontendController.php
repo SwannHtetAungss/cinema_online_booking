@@ -76,9 +76,11 @@ class FrontendController extends Controller
 
     public function movie(){
         $movies = Movie::all();
+        
         $shows=Show::all()->groupBy('movie_id');
         $show_now = Show::where('status','=','1')->groupBy('movie_id')->get();
         $show_soon = Show::where('status','=','2')->groupBy('movie_id')->get();
+        
         // dd($shows);
         return view('frontend.movie',compact('movies','shows','show_now','show_soon'));
     }
