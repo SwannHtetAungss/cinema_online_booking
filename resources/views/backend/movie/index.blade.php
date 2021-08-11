@@ -9,7 +9,7 @@
         <div class="card ">
           <div class="card-header">
             <h2 class="card-title d-inline"> Movie Info </h2>
-            <a href="{{route('movie.create')}}" class="btn btn-fill btn-primary float-right">New</a>
+            <a href="{{route('movie.create')}}" class="btn btn-fill btn-primary float-right"><i class="tim-icons icon-simple-add"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -77,8 +77,8 @@
                                 {{$movie->genre}}
                             </td>
                             <td class="text-center">
-                                <a href="{{route('movie.edit',$movie->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                <a href="#" data-id="{{route('movie.destroy',$movie->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                                <a href="{{route('movie.edit',$movie->id)}}" class="btn btn-primary btn-sm mb-1"><i class="tim-icons icon-settings"></i></a>
+                                <a href="#" data-id="{{route('movie.destroy',$movie->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="tim-icons icon-trash-simple"></i></a>
                             </td>
                         </tr>
 

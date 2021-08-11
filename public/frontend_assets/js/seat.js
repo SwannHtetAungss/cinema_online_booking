@@ -1,6 +1,6 @@
 
   $('.cinema-seats .seat').on('click', function() {
-    alert('hi');
+    // alert('hi');
     $(this).toggleClass('active');
   });
 

@@ -1,11 +1,13 @@
-var white = false
-var bgcolor;
+// var white = false
+// var bgcolor;
 
 $(document).ready(function(){
 
 	getData();
+	getColor();
 
 	$('.addtocart').on('click',function(){
+
 		// alert('hi');
 		var id = $(this).data('id');
 		// alert(id);
@@ -34,13 +36,13 @@ $(document).ready(function(){
 			book_arr = JSON.parse(book_str);
 		}
 		
-		// Change Button Color
-		if (white = !white) {
-            bgcolor = $(this).css('backgroundColor');
-            $(this).css("background-color", "#6c757d");
-        } else {
-            $(this).css("background-color", bgcolor);
-        }
+		// // Change Button Color
+		// if (white = !white) {
+  //           bgcolor = $(this).css('backgroundColor');
+  //           $(this).css("background-color", "#6c757d");
+  //       } else {
+  //           $(this).css("background-color", bgcolor);
+  //       }
 
 		var status = false;
 		// true condition
@@ -49,8 +51,8 @@ $(document).ready(function(){
 			$.each(book_arr,function(i,v){
 				// alert(id);
 				if(v.id==id){
-					// console.log(i);
-					// $( ".addtocart ".v.seatnumber).css("background-color", "red");
+					$('.'+v.seatnumber).removeClass('btn-secondary');
+					$('.'+v.seatnumber).addClass('btn-primary');
 					splice_array.push(i);
 					status = true;
 				}
@@ -150,5 +152,36 @@ $(document).ready(function(){
 
 
 	});
+
+	$('.soldoutbutton').on('click',function(){
+		// alert('hi');
+		swal("Sorry! You are a litte late !","လက်မှတ် မရှိတော့ပါသဖြင့် အခြားအချိန်တစ်ခုအား ရွေးချယ်ပေးပါ","warning");
+	});
+
+
+	// for localstorage change color
+
+	function getColor(){
+		// alert('hi');
+		// var id = $(this).data('id');
+
+		// var seatstr = "{{seats}}";
+		
+		var book_str = localStorage.getItem('cinemabooking');
+
+		if(book_str){
+			var book_arr = JSON.parse(book_str);
+			var count = book_arr.length;
+			// alert(count);
+
+			$.each(book_arr,function(i,v){
+				if(v.id){
+					$('.'+v.seatnumber).removeClass('btn-primary');
+					$('.'+v.seatnumber).addClass('btn-secondary');
+				}
+			});
+		}
+
+	}
 
 })

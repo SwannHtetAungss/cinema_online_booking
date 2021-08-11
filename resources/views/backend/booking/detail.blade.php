@@ -9,7 +9,7 @@
           	<div class="card ">
 	            <div class="card-header">
 	              <h2 class="card-title d-inline"> Booking Details </h2>
-	              <a href="{{route('booking.index')}}" class="btn btn-fill btn-primary float-right">Back</a>
+	              <a href="{{route('booking.index')}}" class="btn btn-fill btn-primary float-right"><i class="tim-icons icon-minimal-left"></i></a>
 	            </div>
 	            <div class="card-body">
 	            	<div class="container">
@@ -62,7 +62,7 @@
 	            		<div class="row">
 	            			<div class="col-7">
 	            				<h5 class="d-inline">Customer Phnumber : </h5>
-	            				<h5 class="d-inline"> &nbsp; &nbsp; Phone Number</h5>
+	            				<h5 class="d-inline"> &nbsp; &nbsp; {{$booking->user->phone_number}}</h5>
 	            			</div>
 	            			<div class="col-5">
 	            				<h5 class="d-inline">Show Time : </h5>

@@ -53,7 +53,24 @@ class FrontendController extends Controller
         // dd($hall_shows);
         // die();
         // dd($hall_shows);
-        return view('frontend.home',compact('hall_shows','movies','show_now','show_soon'));
+
+        $showseats = ShowSeat::where('status','!=',2)->get();
+        // $showseats = ShowSeat::all()->groupBy('show_id');
+        // dd($showseats);
+        // dd($showseats);
+        // $show1 = 0;
+        // $show2 = 0;
+        // foreach($showseats as $showseat){
+        //     // foreach($showseat as $seat){
+        //         echo $showseat->show_id;
+        //     // }
+        // }
+        // dd();
+        // echo $show1;
+        // echo $show2;
+        // dd();
+        // dd($showseats);
+        return view('frontend.home',compact('hall_shows','movies','show_now','show_soon','showseats'));
 
     }
 

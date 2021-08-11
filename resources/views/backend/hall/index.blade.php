@@ -9,7 +9,7 @@
         <div class="card ">
           <div class="card-header">
             <h2 class="card-title d-inline"> Cinema Hall </h2>
-            <a href="{{route('hall.create')}}" class="btn btn-fill btn-primary float-right">New</a>
+            <a href="{{route('hall.create')}}" class="btn btn-fill btn-primary float-right"><i class="tim-icons icon-simple-add"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -46,8 +46,8 @@
                       {{$hall->total_seat}}
                     </td>
                     <td class="text-center">
-                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="#" data-id="{{route('hall.destroy',$hall->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                      <a href="{{route('hall.edit',$hall->id)}}" class="btn btn-primary btn-sm"><i class="tim-icons icon-settings"></i></a>
+                      <a href="#" data-id="{{route('hall.destroy',$hall->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="tim-icons icon-trash-simple"></i></a>
                     </td>
                   </tr>
                   @endforeach

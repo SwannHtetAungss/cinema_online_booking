@@ -9,7 +9,7 @@
         <div class="card ">
           <div class="card-header">
             <h2 class="card-title d-inline"> Cinema Shows Edit </h2>
-            <a href="{{route('shows.index')}}" class="btn btn-fill btn-primary float-right">Back</a>
+            <a href="{{route('shows.index')}}" class="btn btn-fill btn-primary float-right"><i class="tim-icons icon-minimal-left"></i></a>
           </div>
           <div class="card-body">
             <form method="post" action="{{route('shows.update',$show->id)}}">

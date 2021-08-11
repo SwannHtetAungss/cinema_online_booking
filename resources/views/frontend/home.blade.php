@@ -152,7 +152,26 @@
                             {{-- @foreach($show_now as $show_time) --}}
                                 @if($show_time->status == 1)
                                     <div class="showtime-item">
-                                        <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$show_time->hall_id,$show_time->id])}}"> {{$show_time->show_time}} </a>
+                                        @php 
+                                            $i = 0;
+                                        @endphp
+                                        @foreach($showseats as $showseat)
+                                            {{-- @foreach($showseat as $seat) --}}
+                                                @if($showseat->show_id == $show_time->id)
+                                                    @php $i++; @endphp
+                                                @endif
+                                            {{-- @endforeach --}}
+                                        @endforeach
+                                        {{-- <h1>{{$i}}</h1> --}}
+                                        @if($i==$hall_show->total_seat)
+                                            <button class="btn btn-outline-danger px-2 soldoutbutton" aria-disabled="true">
+                                                {{$show_time->show_time}}
+                                            </button>
+                                        @else
+                                            <a class="btn btn-outline-danger px-2" aria-disabled="true" href="{{route('frontend.chooseSeat',[$show_time->hall_id,$show_time->id])}}">
+                                                {{$show_time->show_time}}
+                                            </a>
+                                        @endif
                                     </div>
                                 @endif
                             @endforeach
@@ -359,4 +378,8 @@
     </div>
 </section>
 
+@endsection
+
+@section('addtocart')
+    <script type="text/javascript" src="{{asset('frontend_assets/js/booking.js')}}"></script>
 @endsection

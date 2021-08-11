@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 // For backend
 Route::middleware('auth','role:admin')->group(function(){
+	Route::get('dashboard','DashboardController@index')->name('dashboard.index');
+	Route::post('checkData','DashboardController@checkData')->name('checkData');
 	Route::resource('hall','HallController');
 	Route::resource('shows','ShowController');
 	Route::resource('seat','SeatController');

@@ -9,7 +9,7 @@
         <div class="card ">
           <div class="card-header">
             <h2 class="card-title d-inline"> Cinema Shows </h2>
-            <a href="{{route('shows.create')}}" class="btn btn-fill btn-primary float-right">New</a>
+            <a href="{{route('shows.create')}}" class="btn btn-fill btn-primary float-right"><i class="tim-icons icon-simple-add"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -62,16 +62,16 @@
                     </td>
                     <td>
                       @if($show->status == 0)
-                      <h4 class="text-danger">Time Over</h4>
+                      <span class="text-danger">Time Over</span>
                       @elseif($show->status == 1)
-                      <h4 class="text-success">Now</h4>
+                      <span class="text-success">Now</span>
                       @elseif($show->status == 2)
-                      <h4 style="color:yellow">Comming Soon</h4>
+                      <span style="color:yellow">Comming Soon</span>
                       @endif
                     </td>
                     <td class="text-center">
-                      <a href="{{route('shows.edit',$show->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                      <a href="#" data-id="{{route('shows.destroy',$show->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                      <a href="{{route('shows.edit',$show->id)}}" class="btn btn-primary btn-sm"><i class="tim-icons icon-settings"></i></a>
+                      <a href="#" data-id="{{route('shows.destroy',$show->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="tim-icons icon-trash-simple"></i></a>
                     </td>
                   </tr>
                   @endforeach

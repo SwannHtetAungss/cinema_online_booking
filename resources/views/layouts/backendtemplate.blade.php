@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('backend_assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('backend_assets/img/favicon.png')}}">
   <title>
@@ -21,6 +24,10 @@
 
   <!-- Main CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('backend_assets/css/main.css')}}">
+
+  {{-- Custom CSS --}}
+  @yield('seatButton')
+
 </head>
 
 <body class="">
@@ -39,8 +46,8 @@
           </a>
         </div>
         <ul class="nav">
-          <li>
-            <a href="./dashboard.html">
+          <li class="{{Request::is('dashboard') ? 'active': ''}}">
+            <a href="{{route('dashboard.index')}}">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
@@ -73,18 +80,6 @@
             <a href="{{route('booking.index')}}">
               <i class="tim-icons icon-align-center"></i>
               <p>Bookings</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="tim-icons icon-align-center"></i>
-              <p>Typography</p>
             </a>
           </li>
           {{-- <li>
@@ -420,7 +415,7 @@
 
   {{-- Custom JS --}}
   @yield('script')
-  
+  @yield('checkData')
 </body>
 
 </html>

@@ -55,11 +55,11 @@
                                     </div>
                                     <div class="bg-theme-lighted d-over collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-view-popup">
-                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$shownow->trailer}}" data-magnific-popup="iframe">
+                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$shownow->movie->trailer}}" data-magnific-popup="iframe">
                                                 <span class="icon-content"><i class="fas fa-play"></i></span>
                                             </a>
                                         </div>
-                                        <a href="{{route('frontend.detail',$shownow->id)}}" class="entity-title">
+                                        <a href="{{route('frontend.detail',$shownow->movie->id)}}" class="entity-title">
                                             <h3>{{$shownow->movie->name}}</h3>
                                         </a>
                                     </div>
@@ -83,11 +83,11 @@
                                     </div>
                                     <div class="bg-theme-lighted d-over collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                         <div class="entity-view-popup">
-                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$showsoon->trailer}}" data-magnific-popup="iframe">
+                                            <a class="action-icon-theme action-icon-bordered rounded-circle" href="{{$showsoon->movie->trailer}}" data-magnific-popup="iframe">
                                                 <span class="icon-content"><i class="fas fa-play"></i></span>
                                             </a>
                                         </div>
-                                        <a href="{{route('frontend.detail',$showsoon->id)}}" class="entity-title">
+                                        <a href="{{route('frontend.detail',$showsoon->movie->id)}}" class="entity-title">
                                             <h3>{{$showsoon->movie->name}}</h3>
                                         </a>
                                     </div>
