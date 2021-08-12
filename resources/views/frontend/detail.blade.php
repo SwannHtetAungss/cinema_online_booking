@@ -116,7 +116,7 @@
                                                         <div class="showtime-item">
                                                             <a class="btn btn-outline-danger px-2" aria-disabled="true"  href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
                                                         </div>
-                                                        @else
+                                                        @elseif($detail_shows->status == 2)
                                                             <div class="showtime-item">
                                                                 <h4 class="text-muted">Comming Soon</h4>
                                                             </div>

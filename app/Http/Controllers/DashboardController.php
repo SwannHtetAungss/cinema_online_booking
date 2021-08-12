@@ -8,6 +8,7 @@ use App\Hall;
 use App\Show;
 use App\Seat;
 use App\ShowSeat;
+use App\Movie;
 // use Illuminate\Support\Facades\DB;
 
 
@@ -28,9 +29,14 @@ class DashboardController extends Controller
         $showid = $request->show_id;
 
         $seats = Seat::where('hall_id','=',$hallid)->get();
-
         $showseats = ShowSeat::where('show_id','=',$showid)->get();
 
-        return ['seats'=>$seats,'showseats'=>$showseats];
+        $show = Show::find($showid);
+        $movie = Movie::find($show->movie_id);
+
+        $hall = Hall::find($hallid);
+
+
+        return ['seats'=>$seats,'showseats'=>$showseats,'movie'=>$movie,'hall'=>$hall];
     }
 }

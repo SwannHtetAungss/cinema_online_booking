@@ -10,7 +10,7 @@
 .booked {
   width: 70px;
   height: 30px;
-  background-color: darkred;
+  background-color: yellow;
   color: white;
   float: left;
   border-radius: 2px;
@@ -19,7 +19,7 @@
 .confrim {
   width: 70px;
   height: 30px;
-  background-color: yellow;
+  background-color: #e87c87;
   color: white;
   float: left;
   border-radius: 2px;

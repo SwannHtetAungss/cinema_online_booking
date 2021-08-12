@@ -39,10 +39,10 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-            CT
+            {{-- M --}}
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
-            Creative Tim
+            MEMICO
           </a>
         </div>
         <ul class="nav">
@@ -52,25 +52,25 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="{{Request::is('hall') ? 'active': ''}}">
+          <li class="{{Request::is('hall') ? 'active': ''}} {{Request::is('hall/create') ? 'active': ''}}">
             <a href="{{route('hall.index')}}">
               <i class="tim-icons icon-atom"></i>
               <p>Halls</p>
             </a>
           </li>
-          <li class="{{Request::is('seat') ? 'active': ''}}">
+          <li class="{{Request::is('seat') ? 'active': ''}} {{Request::is('seat/create') ? 'active': ''}}">
             <a href="{{route('seat.index')}}">
               <i class="tim-icons icon-pin"></i>
               <p>Seats</p>
             </a>
           </li>
-          <li class="{{Request::is('movie') ? 'active': ''}}">
+          <li class="{{Request::is('movie') ? 'active': ''}} {{Request::is('movie/create') ? 'active': ''}}">
             <a href="{{route('movie.index')}}">
-              <i class="tim-icons icon-bell-55"></i>
+              <i class="tim-icons icon-video-66"></i>
               <p>Movies</p>
             </a>
           </li>
-          <li class="{{Request::is('shows') ? 'active': ''}}">
+          <li class="{{Request::is('shows') ? 'active': ''}} {{Request::is('shows/create') ? 'active': ''}}">
             <a href="{{route('shows.index')}}">
               <i class="tim-icons icon-puzzle-10"></i>
               <p>Shows</p>
@@ -78,7 +78,7 @@
           </li>
           <li class="{{Request::is('booking') ? 'active': ''}}">
             <a href="{{route('booking.index')}}">
-              <i class="tim-icons icon-align-center"></i>
+              <i class="tim-icons icon-bullet-list-67"></i>
               <p>Bookings</p>
             </a>
           </li>
@@ -109,7 +109,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">Table List</a>
+            <a class="navbar-brand" href="javascript:void(0)">Movies For You!</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>

@@ -13,57 +13,31 @@ $('.checkData').on('click',function(){
 		// console.log(res);
 		var seats = res.seats;
 		var showseats = res.showseats;
-		// console.log(showseats);
-			var html='';
-			$.each(seats,function(i,v){
-				var seatAll;
+		var movie = res.movie;
+		var hall = res.hall;
+
+		var html='';
+		$.each(seats,function(i,v){
+
+			if(showseats.length > 0){
+				html += `<div class="`;
 				$.each(showseats,function(i,ss){
-
-					// console.log(v,ss.seat_id);
-
-					var status = ss.status;
-					if(v.id == ss.seat_id && status==0){
-						seatAll='booked';
-					}else if(v.id == ss.seat_id && status==1){
-						seatAll='confrim';
+					if(ss.status==0 && ss.seat_id==v.id){
+						html+= `booked `;
+					}else if(ss.status==1 && ss.seat_id==v.id){
+						html+=`confrim `;
 					}else{
-						seatAll='available';
+						html+=`available `;
 					}
-					
-					html += `<div class="${seatAll} mr-1 mb-1 text-center"> ${v.seat_number} </div>`;
-
 				});
-				// console.log(seatAll);
-
-				// html += `<div class="`;
-				// $.each(showseats,function(i,ss){
-				// 	if(ss.status==0){
-				// 		html+= `booked`;
-				// 	}else if(ss.status==1){
-				// 		html+=`confrim`;
-				// 	}else{
-				// 		html+=`available`;
-				// 	}
-				// });
-				// html+=`mr-1 mb-1 text-center"> ${v.seat_number} </div>`;
-			});
-				// console.log(html);
-			// $.each(seats,function(i,s){
-			// 	$.each(showseats,function(i,v){
-			// 		if(s.id == v.seat_id){
-			// 		var rows = `<div class="available mr-1 mb-1 text-center"> ${s.seat_number} </div>`;
-
-			// 		}
-			// 	html+=rows;
-
-			// 	});
-
+				html+=` mr-1 mb-1 text-center"> ${v.seat_number} </div>`;
+			}else{
+				html += `<div class="available mr-1 mb-1 text-center"> ${v.seat_number} </div>`;
+			}
+		});
 				
-
-			// });
-			// console.log(html);
 		$('.seatButton').html(html);
-
+		$('.hallname').html(': '+hall.name);
 	});
 
 });

@@ -43,7 +43,7 @@ class LoginController extends Controller
     protected function authenticated($user){
         $roles = Auth::user()->getRoleNames();;
         if($roles[0] == 'admin'){
-            return redirect()->route('hall.index');
+            return redirect()->route('dashboard.index');
         }else{
             return redirect($user->uri);
         }

@@ -19,7 +19,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::orderBy('id', 'desc')->get();
         return view('backend.booking.index',compact('bookings'));
     }
 
