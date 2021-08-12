@@ -30,7 +30,9 @@ class ShowController extends Controller
         $halls=Hall::all();
         $movies=Movie::all();
 
-        return view('backend.shows.create',compact('halls','movies'));
+        $shows = Show::all();
+
+        return view('backend.shows.create',compact('halls','movies','shows'));
     }
 
     /**

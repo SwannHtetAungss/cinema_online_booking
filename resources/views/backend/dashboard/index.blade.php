@@ -25,6 +25,7 @@
                     <div class="form-group col-12">
                         <label class="control-label col-form-label">Hall Name</label>
                         <select name="hall" class="form-control" id="hall">
+                          <option>--Choose hall Name--</option>
                           @foreach($halls as $hall)
                             <option value="{{$hall->id}}">{{$hall->name}}</option>
                           @endforeach
@@ -34,9 +35,9 @@
                     <div class="form-group col-12">
                         <label class="control-label col-form-label">Show Time</label>
                         <select name="show" class="form-control" id="show">
-                          @foreach($shows as $show)
-                            <option value="{{$show->id}}">{{$show->show_time}}</option>
-                          @endforeach
+                      
+                          <option>--Choose Show Time--</option>
+                          
                         </select>
                     </div>
 
@@ -84,52 +85,52 @@
             <div class="table-responsive">
               <table class="table tablesorter " id="">
                 <tbody>
-                  <tr>
-                    <td>
-                      Hall Name
+                  <tr class="col-12">
+                    <td class="col-4">
+                      Hall Name 
                     </td>
-                    <td>
+                    <td class="col-8">
                       <span class="hallname">: </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr class="col-12">
+                    <td class="col-4">
                       Show Name
                     </td>
-                    <td>
+                    <td class="col-8">
                       <span class="moviename">: </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr class="col-12">
+                    <td class="col-4">
                       Total Seat
                     </td>
-                    <td>
-                      : 50
+                    <td class="col-8">
+                      <span class="halltotalseat">: </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr class="col-12">
+                    <td class="col-4">
                       Available
                     </td>
-                    <td>
-                      : 10
+                    <td class="col-8">
+                      <span class="av">: </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr class="col-12">
+                    <td class="col-4">
                       Confirm
                     </td>
-                    <td>
-                      : 30
+                    <td class="col-8">
+                      <span class="con">: </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr class="col-12">
+                    <td class="col-4">
                       Booked
                     </td>
-                    <td>
-                      : 10
+                    <td class="col-8">
+                      <span class="bo">: </span>
                     </td>
                   </tr>
                 </tbody>

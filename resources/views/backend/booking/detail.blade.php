@@ -70,6 +70,26 @@
 	            			</div>
 	            		</div>
 
+	            		<div class="row">
+	            			<div class="col-7">
+	            				
+	            			</div>
+	            			<div class="col-5">
+	            				<h5 class="d-inline">Total Seat : </h5>
+	            				<h5 class="d-inline"> &nbsp; &nbsp; {{$booking->numberofseats}} </h5>
+	            			</div>
+	            		</div>
+
+	            		<div class="row">
+	            			<div class="col-7">
+	            				
+	            			</div>
+	            			<div class="col-5">
+	            				<h5 class="d-inline">Total Amount : </h5>
+	            				<h5 class="d-inline"> &nbsp; &nbsp; {{$booking->total}} </h5>
+	            			</div>
+	            		</div>
+
 	            	</div>
 	              	<div class="table-responsive">
 		                <table class="table tablesorter">

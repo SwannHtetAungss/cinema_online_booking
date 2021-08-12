@@ -94,6 +94,8 @@ class FrontendController extends Controller
         $movie_details = Movie::find($id);
 
         $detail_show = Show::where('movie_id','=', $id)->get();
+
+        $showseats = ShowSeat::where('status','!=',2)->get();
         
         foreach($detail_show as $detail_hall){
             $hallid = $detail_hall->hall_id;
@@ -101,11 +103,12 @@ class FrontendController extends Controller
         }
         
         if($detail_show->isEmpty()){
-            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show'));
+            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show','showseats'));
         }else{
-            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show','detail_hall_show'));
+            return view('frontend.detail',compact('movie_details','all_movies','show_now','detail_show','detail_hall_show','showseats'));
         }
         
+
     }
 
 
@@ -116,7 +119,7 @@ class FrontendController extends Controller
 
     public function history(){
         $user_id = Auth::user()->id;
-        $bookings = Booking::where('user_id','=',$user_id)->get();
+        $bookings = Booking::where('user_id','=',$user_id)->orderBy('id', 'desc')->get();
         $shows = Show::all();
         $showseats =ShowSeat::all();
         return view('frontend.history',compact('bookings','shows','showseats'));

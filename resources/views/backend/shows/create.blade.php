@@ -54,7 +54,15 @@
 		            <div class="col-sm-10">
 		              <select name="Movie_id" class="form-control">
 		            		@foreach($movies as $movie)
-		            			<option value="{{$movie->id}}">{{$movie->name}}</option>
+		            			<option value="{{$movie->id}}">
+		            				{{$movie->name}} 
+		            				&nbsp; &nbsp; &nbsp;
+		            				@foreach($shows as $show)
+		            					@if($show->movie_id == $movie->id && $show->status==1)
+		            						<span>({{$show->show_time}})</span>
+		            					@endif
+		            				@endforeach
+		            			</option>
 		            		@endforeach
 		            	</select>
 		              

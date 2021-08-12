@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth','role:admin')->group(function(){
 	Route::get('dashboard','DashboardController@index')->name('dashboard.index');
 	Route::post('checkData','DashboardController@checkData')->name('checkData');
+	Route::post('selectfilter','DashboardController@selectfilter')->name('selectfilter');
 	Route::resource('hall','HallController');
 	Route::resource('shows','ShowController');
 	Route::resource('seat','SeatController');

@@ -39,4 +39,16 @@ class DashboardController extends Controller
 
         return ['seats'=>$seats,'showseats'=>$showseats,'movie'=>$movie,'hall'=>$hall];
     }
+
+    public function selectfilter(Request $request){
+
+        $hallid = $request->hallid;
+
+        if(strlen($hallid)==1){
+            $shows = Show::where('hall_id','=',$hallid)
+                            ->where('status','=',1)
+                            ->get();
+            return $shows;
+        }
+    }
 }

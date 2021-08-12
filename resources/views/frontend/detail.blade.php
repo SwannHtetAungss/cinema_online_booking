@@ -109,13 +109,31 @@
                                             <td colspan="3">
                                                 <div class="entity-showtime">
                                                     <div class="showtime-wrap">
-                                                        
                                                         @foreach($detail_show as $detail_shows)
                                                         @if($detail_shows->status == 1)
-                                                            
+                                                        
+
                                                         <div class="showtime-item">
-                                                            <a class="btn btn-outline-danger px-2" aria-disabled="true"  href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+
+                                                            @php 
+                                                                $i = 0;
+                                                            @endphp
+                                                            @foreach($showseats as $showseat)
+                                                                {{-- @foreach($showseat as $seat) --}}
+                                                                    @if($showseat->show_id == $detail_shows->id)
+                                                                        @php $i++; @endphp
+                                                                    @endif
+                                                                {{-- @endforeach --}}
+                                                            @endforeach
+
+                                                            @if($i==$detail_hall_show[0]->total_seat)
+                                                                <button class="btn btn-outline-danger px-2 soldoutbutton" aria-disabled="true"> {{$detail_shows->show_time}} </button>
+                                                            @else
+                                                                <a class="btn btn-outline-danger px-2" aria-disabled="true"  href="{{route('frontend.chooseSeat',[$detail_shows->hall_id,$detail_shows->id])}}"> {{$detail_shows->show_time}} </a>
+                                                            @endif
                                                         </div>
+
+
                                                         @elseif($detail_shows->status == 2)
                                                             <div class="showtime-item">
                                                                 <h4 class="text-muted">Comming Soon</h4>
@@ -274,4 +292,8 @@
     </body>
 </html>
 
+@endsection
+
+@section('addtocart')
+    <script type="text/javascript" src="{{asset('frontend_assets/js/booking.js')}}"></script>
 @endsection

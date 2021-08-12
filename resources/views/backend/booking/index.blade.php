@@ -23,10 +23,10 @@
                         Booking Date
                       </th>
                       <th>
-                        TotalSeats
+                        Movie Name
                       </th>
                       <th>
-                        TotalAmount
+                        Show Time
                       </th>
                       <th>
                         Customer
@@ -52,10 +52,10 @@
                         {{$booking->booking_time}}
                       </td>
                       <td>
-                        {{$booking->numberofseats}}
+                        {{$booking->show->movie->name}}
                       </td>
                       <td>
-                        {{$booking->total}}
+                        {{$booking->show->show_time}}
                       </td>
                       <td>
                         {{$booking->user->name}}
