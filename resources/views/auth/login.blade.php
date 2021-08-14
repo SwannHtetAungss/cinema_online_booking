@@ -10,10 +10,10 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        {{-- @php
+                        @php
                             $uri = $_SERVER['HTTP_REFERER'];
                         @endphp
-                        <input type="hidden" name="uri" value="{{$uri}}"> --}}
+                        <input type="hidden" name="uri" value="{{$uri}}">
                         
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

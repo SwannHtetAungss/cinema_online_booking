@@ -26,13 +26,13 @@ class HomeController extends Controller
     {
         // return view('home');
 
-        $roles = Auth::user()->getRoleNames();
-        // dd($roles);
-        if($roles[0] == 'admin'){
-            return redirect()->route('hall.index');
-        }else{
-            return redirect()->route('homepage');
-        }
+        // $roles = Auth::user()->getRoleNames();
+        // // dd($roles);
+        // if($roles[0] == 'admin'){
+        //     return redirect()->route('hall.index');
+        // }else{
+        //     return redirect()->route('homepage');
+        // }
 
     }
 }
